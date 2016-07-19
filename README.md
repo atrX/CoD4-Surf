@@ -10,7 +10,7 @@ This software is released under the GNU General Public License v3.0
 
 ## Installation
 ### Backend
-> Place the contents of "web_backend" into your web server's directory accessible via http://localhost/system/interface/surf/
+> Place the contents of "web_backend" into your web server's directory accessible via http://localhost/sys/cod4/ (or you can go through the GSC files in /surf to change the path)
 
 > Open "config.php" and edit the values inside
 
