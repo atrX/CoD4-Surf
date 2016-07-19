@@ -1,0 +1,113 @@
+/*
+	Call of Duty 4: Surf Mod
+	Copyright (C) 2016  Jordy Rymenants
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "ui/menudef.h"
+
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+
+#include "ui_mp/surf_common.inc"
+{
+	menuDef
+	{
+		name			"customization"
+		rect			FULLSCREEN_WIDE HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		blurWorld		7.0
+		legacySplitScreenScale
+		
+		onOpen
+		{
+			execNow "set menuName Customization";
+			setdvar customization_menu "none";
+		}
+
+		onEsc
+		{
+			close self;
+			open ingame_main;
+		}
+		
+		#include "ui_mp/surf_menu_frame.inc"
+
+		SURF_BUTTON( "0", 60, 80, 188, 28, "Weapon", setdvar customization_menu "weapon";, 1 )
+		SURF_BUTTON( "1", 60, 116, 188, 28, "Character", setdvar customization_menu "character";, 1 )
+		SURF_BUTTON( "2", 60, 152, 188, 28, "Hands", setdvar customization_menu "hands";, 1 )
+		SURF_BUTTON( "3", 60, 188, 188, 28, "Knife", setdvar customization_menu "knives";, 1 )
+		SURF_BUTTON( "4", 60, 224, 188, 28, "^3VIP", setdvar customization_menu "omgwtfbbq";, when( dvarInt( "surf_player_vip" ) == 1 ) )
+		SURF_BUTTON( "5", 60, 260, 188, 28, "Back", close self; open ingame_main;, 1 )
+
+		SURF_WEAPON( 354, 80, 1, "weapon:1" )
+		SURF_WEAPON( 354, 116, 2, "weapon:2" )
+		SURF_WEAPON( 354, 152, 3, "weapon:3" )
+		SURF_WEAPON( 354, 188, 4, "weapon:4" )
+		SURF_WEAPON( 354, 224, 5, "weapon:5" )
+		SURF_WEAPON( 354, 260, 6, "weapon:6" )
+		SURF_WEAPON( 354, 296, 7, "weapon:7" )
+		SURF_WEAPON( 354, 332, 8, "weapon:8" )
+		SURF_WEAPON( 354, 368, 9, "weapon:9" )
+		SURF_WEAPON( 488, 80, 10, "weapon:10" )
+
+		SURF_CHARACTER( 354, 80, 1, "character:1" )
+		SURF_CHARACTER( 354, 116, 2, "character:2" )
+		SURF_CHARACTER( 354, 152, 3, "character:3" )
+		SURF_CHARACTER( 354, 188, 4, "character:4" )
+		SURF_CHARACTER( 354, 224, 5, "character:5" )
+		SURF_CHARACTER( 354, 260, 6, "character:6" )
+		SURF_CHARACTER( 354, 296, 7, "character:7" )
+		SURF_CHARACTER( 354, 332, 8, "character:8" )
+		SURF_CHARACTER( 354, 368, 9, "character:9" )
+		SURF_CHARACTER( 488, 80, 10, "character:10" )
+		SURF_CHARACTER( 488, 116, 11, "character:11" )
+		SURF_CHARACTER( 488, 152, 12, "character:12" )
+		SURF_CHARACTER( 488, 188, 13, "character:13" )
+		SURF_CHARACTER( 488, 224, 14, "character:14" )
+		SURF_CHARACTER( 488, 260, 15, "character:15" )
+		SURF_CHARACTER( 488, 296, 16, "character:16" )
+
+		SURF_HANDS( 354, 80, 1, "hands:1" )
+		SURF_HANDS( 354, 116, 2, "hands:2" )
+		SURF_HANDS( 354, 152, 3, "hands:3" )
+		SURF_HANDS( 354, 188, 4, "hands:4" )
+		SURF_HANDS( 354, 224, 5, "hands:5" )
+		SURF_HANDS( 354, 260, 6, "hands:6" )
+		SURF_HANDS( 354, 296, 7, "hands:7" )
+		SURF_HANDS( 354, 332, 8, "hands:8" )
+		SURF_HANDS( 354, 368, 9, "hands:9" )
+
+		SURF_KNIFE( 354, 80, 1, "knife:1" )
+		SURF_KNIFE( 354, 116, 2, "knife:2" )
+		SURF_KNIFE( 354, 152, 3, "knife:3" )
+		SURF_KNIFE( 354, 188, 4, "knife:4" )
+		SURF_KNIFE( 354, 224, 5, "knife:5" )
+		SURF_KNIFE( 354, 260, 6, "knife:6" )
+		
+		// VIP stuff
+		SURF_TRAIL_VIP( 354, 80, 1, "trail:1" )
+		SURF_TRAIL_VIP( 354, 116, 2, "trail:2:vip" )
+		SURF_TRAIL_VIP( 354, 152, 3, "trail:3:vip" )
+		SURF_TRAIL_VIP( 354, 188, 4, "trail:4:vip" )
+		SURF_TRAIL_VIP( 354, 224, 5, "trail:5:vip" )
+		SURF_TRAIL_VIP( 354, 260, 6, "trail:6:vip" )
+		SURF_TRAIL_VIP( 354, 296, 7, "trail:7:vip" )
+		
+		SURF_VIPITEM( 488, 80, "Status Icon", "surf_vip_item_statusicon", "vip_item:statusicon" )
+		SURF_HANDS_VIP( 488, 116, 10, "hands:10:vip" )
+	}
+}

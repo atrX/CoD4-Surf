@@ -1,0 +1,129 @@
+/*
+	Call of Duty 4: Surf Mod
+	Copyright (C) 2016  Jordy Rymenants
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+
+#include "ui_mp/popupstyle.inc"	
+#include "ui/choices_setup_popmenu.menu"
+
+#undef CHOICE_SIZE_X
+#define CHOICE_SIZE_X			186
+
+#undef CHOICE_POPUP_BACKCOLOR
+#define CHOICE_POPUP_BACKCOLOR  0.2 0.2 0.22 0.65
+
+#define ORIGIN_QUICKMESSAGEWINDOW		0 16
+
+{
+	menuDef
+	{
+		IMPROVED_POPUP_SETUP_ONOPEN( mapvote, 10, 4, 210, ;, setDvar cl_bypassMouseInput "1";, 0 )
+		onClose{ setDvar cl_bypassMouseInput "0" }
+		
+		CHOICE_POPMENU_TITLE( "Vote for the next map" )
+		
+		itemDef
+		{
+			name			"window"
+			group			ingamebox
+			visible			1
+			rect			16 20 0 0
+			origin			ORIGIN_QUICKMESSAGEWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			exp				text( "1. " + dvarString( "surf_mapvote_map_1" ) )
+			decoration
+		}
+		execKey "1" { scriptMenuResponse 0; close mapvote }
+		
+		itemDef
+		{
+			name			"window"
+			group			ingamebox
+			visible			1
+			rect			16 36 0 0
+			origin			ORIGIN_QUICKMESSAGEWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			exp				text( "2. " + dvarString( "surf_mapvote_map_2" ) )
+			decoration
+		}
+		execKey "2" { scriptMenuResponse 1; close mapvote }
+		
+		itemDef
+		{
+			name			"window"
+			group			ingamebox
+			visible			1
+			rect			16 52 0 0
+			origin			ORIGIN_QUICKMESSAGEWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			exp				text( "3. " + dvarString( "surf_mapvote_map_3" ) )
+			decoration
+		}
+		execKey "3" { scriptMenuResponse 2; close mapvote }
+		
+		itemDef
+		{
+			name			"window"
+			group			ingamebox
+			visible			1
+			rect			16 68 0 0
+			origin			ORIGIN_QUICKMESSAGEWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			exp				text( "4. " + dvarString( "surf_mapvote_map_4" ) )
+			decoration
+		}
+		execKey "4" { scriptMenuResponse 3; close mapvote }
+		
+		itemDef
+		{
+			name			"window"
+			group			ingamebox
+			visible			1
+			rect			16 84 0 0
+			origin			ORIGIN_QUICKMESSAGEWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			exp				text( "5. " + dvarString( "surf_mapvote_map_5" ) )
+			decoration
+		}
+		execKey "5" { scriptMenuResponse 4; close mapvote }
+	}
+}

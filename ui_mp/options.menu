@@ -1,0 +1,78 @@
+/*
+	Call of Duty 4: Surf Mod
+	Copyright (C) 2016  Jordy Rymenants
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "ui/menudef.h"
+#include "ui_mp/common_macro.inc"
+#define OPTIONS_STYLE			1
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+
+{
+	menuDef 
+	{
+		name			main_controls
+		fullScreen		0
+		rect			0 0 640 480
+		focusColor		COLOR_FOCUSED
+		soundloop		""
+		onOpen
+		{
+			setLocalVarBool ui_showApply 0;
+			setLocalVarBool ui_hideBack 1;
+			
+			setitemcolor fadebox backcolor 0 0 0 1;
+			fadeout fadebox ;
+			setdvar g_reloading "0";
+		}
+		onClose{ setLocalVarBool ui_hideBack 0; }
+		onESC 
+		{ 
+			close self;
+			open "ingame_main";
+		}
+		#include "ui_mp/leftside_controls.inc"
+	}	
+	
+	#undef CHOICE_SIZE_X
+	#define CHOICE_SIZE_X 				220
+
+	menuDef 
+	{
+		name			main_options
+		fullScreen		0
+		rect			0 0 640 480
+		focusColor		COLOR_FOCUSED
+		soundloop		""
+		onOpen
+		{
+			setLocalVarBool ui_showApply 0;
+			setLocalVarBool ui_hideBack 1;
+			
+			setitemcolor fadebox backcolor 0 0 0 1;
+			fadeout fadebox;
+			setdvar g_reloading "0";
+		}
+		onClose{ setLocalVarBool ui_hideBack 0; }
+		onESC 
+		{ 
+			close self;
+			open "ingame_main";
+		}
+		#include "ui_mp/leftside_options.inc"
+	}
+}

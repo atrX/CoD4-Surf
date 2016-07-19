@@ -1,0 +1,271 @@
+/**
+ * CoD4 Surf Mod
+ * Script Documentation
+ *
+ * This file includes:
+ * - functions
+ * - descriptions
+ * - module info
+ * - usage examples
+ * - parameters
+ * - return values
+ *
+ * If a version number is specified this means the functionality was added in
+ * said version of the Surf Mod, any previous versions will crash if you
+ * attempt to make use of this functionality
+ */
+
+// Mod functions
+
+/**
+ * Description: checks if a player is on a surf ramp
+ * Module: _surf
+ * Usage: self isOnRamp()
+ * @return {Boolean}
+ */
+isOnRamp()
+
+/**
+ * Description: checks if a player is on a surf located to his left
+ * Module: _surf
+ * Usage: self isOnRampLeft()
+ * @return {Boolean}
+ */
+isOnRampLeft()
+
+/**
+ * Description: checks if a player is on a surf located to his right
+ * Module: _surf
+ * Usage: self isOnRampRight()
+ * @return {Boolean}
+ */
+isOnRampRight()
+
+/**
+ * Description: checks if a player is in a zone with a maximum bhop speed of 300
+ * Module: _bunnyhop
+ * Usage: self inNoHopZone()
+ * @return {Boolean}
+ */
+inNoHopZone()
+
+/**
+ * Description: spawn a credits hud element
+ * Module: _util
+ * Usage: credits( myArray )
+ * @param  {Array} lines 	Array of strings containing individual credit lines
+ */
+credits( lines )
+
+/**
+ * Description: add a new value to an array
+ * Module: _util
+ * Usage: array = addToArray( array, "world" )
+ * @param  {Array} arr   	Any array
+ * @param  {Array} value  	New value to insert
+ * @return {Array} 			New array
+ */
+addToArray( arr, value )
+
+/**
+ * Description: checks if a variable is an array
+ * Module: _util
+ * Usage: isArray( var )
+ * @param  {Any}  var       Any variable
+ * @return {Boolean}
+ */
+isArray( var )
+
+/**
+ * Description: strips all color from a string
+ * Module: _util
+ * Usage: name = stripColor( name )
+ * @param  {String} str     Any string
+ * @return {String}         Input string stripped from color
+ */
+stripColor( str )
+
+/**
+ * Description: converts a timestamp in milliseconds to a formatted string
+ * Module: _util
+ * Usage: timeString = toTime( timestamp )
+ * @param  {Int} msTime     Timestamp in milliseconds
+ * @return {String}         Formatted time string
+ */
+toTime( msTime )
+
+/**
+ * Description: gets a player's current speed
+ * Version: 1.0.1
+ * Module: _util
+ * Usage: speed = self getPlayerSpeed()
+ * @return {Int}            Player's speed
+ */
+getPlayerSpeed()
+
+/**
+ * Description: set a player's speed
+ * Version: 1.0.2
+ * Module: _util
+ * Usage: self setPlayerSpeed( speed )
+ * @param  {Int} speed      New speed
+ */
+setPlayerSpeed( speed )
+
+/**
+ * Description: set a player's speed by a multiplier
+ * Version: 1.0.2
+ * Module: _util
+ * Usage: self scalePlayerSpeed( speedScale )
+ * @param  {Float} speedScale   Multiplier for scaling of speed
+ */
+scalePlayerSpeed( speedScale )
+
+/**
+ * Description: respawns a player
+ * Module: _mod
+ * Usage: self respawn()
+ */
+respawn()
+
+/**
+ * Description: creates a teleporter out of a trigger
+ * Module: _mod
+ * Usage: trigger thread teleporter()
+ */
+teleporter()
+
+/**
+ * Description: creates a booster out of a trigger
+ * Module: _mod
+ * Usage: trigger thread booster()
+ */
+booster()
+
+
+// Server functions
+
+/**
+ * Description: checks if a player is pressing the forward key
+ * Usage: self forwardButtonPressed()
+ * @return {Boolean}
+ */
+forwardButtonPressed()
+
+/**
+ * Description: checks if a player is pressing the backward key
+ * Usage: self backButtonPressed()
+ * @return {Boolean}
+ */
+backButtonPressed()
+
+/**
+ * Description: checks if a player is pressing the left key
+ * Usage: self leftButtonPressed()
+ * @return {Boolean}
+ */
+leftButtonPressed()
+
+/**
+ * Description: checks if a player is pressing the right key
+ * Usage: self rightButtonPressed()
+ * @return {Boolean}
+ */
+rightButtonPressed()
+
+/**
+ * Description: checks if a player is pressing the jump key
+ * Usage: self jumpButtonPressed()
+ * @return {Boolean}
+ */
+jumpButtonPressed()
+
+/**
+ * Description: checks if a player is pressing the reload key
+ * Usage: self reloadButtonPressed()
+ * @return {Boolean}
+ */
+reloadButtonPressed()
+
+/**
+ * Description: checks if a player is pressing the lean left key
+ * Usage: self leanLeftButtonPressed()
+ * @return {Boolean}
+ */
+leanLeftButtonPressed()
+
+/**
+ * Description: checks if a player is pressing the lean right key
+ * Usage: self leanRightButtonPressed()
+ * @return {Boolean}
+ */
+leanRightButtonPressed()
+
+/**
+ * Description: checks if a player is pressing the sprint key
+ * Usage: self sprintButtonPressed()
+ * @return {Boolean}
+ */
+sprintButtonPressed()
+
+/**
+ * Description: checks if a player is pressing the key with the specified ID
+ * Usage: self isButtonPressed( 1024 )
+ * @param  {Vec3}  id       Button ID
+ * @return {Boolean}
+ *
+ * List of known IDs:
+ * 2:    sprint
+ * 32:   reload
+ * 64:   lean left
+ * 128:  lean right
+ * 1024: jump
+ */
+isButtonPressed( id )
+
+/**
+ * Description: sets a player's velocity
+ * Usage: self setVelocity( ( 0, 0, 0 ) )
+ * @param  {Vec3}  vec      Vector 3D
+ */
+setVelocity( vec )
+
+/**
+ * Description: scales a vector with a specified multiplier
+ * Usage: vec = vectorScale( ( 1, 1, 0 ), speed )
+ * @param  {Vec3}  vec      Vector 3D
+ * @param  {Float} scale    Scale multiplier
+ * @return {Vec3}           Scaled Vector 3D
+ */
+vectorScale( vec, scale )
+
+/**
+ * Description: gets the entity number of the client who is being spectated
+ * Usage: self getSpectatedClient()
+ * @return {Int}        Entity number
+ */
+getSpectatedClient()
+
+/**
+ * Description: converts a string to a floating point number
+ * Usage: val = toFloat( "123" );
+ * @param  {String}     Input string
+ * @return {Float}      Input converted to float
+ */
+toFloat( str )
+
+/**
+ * Description: converts a string to upper case
+ * Usage: str = toUpper( str )
+ * @param  {String} str     Input string
+ * @return {String}         Input string converted to upper case
+ */
+toUpper( str )
+
+/**
+ * Description: converts a string to title case
+ * Usage: str = toTitle( str )
+ * @param  {String} str     Input string
+ * @return {String}         Input string converted to title case
+ */
+toTitle( str )

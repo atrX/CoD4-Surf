@@ -1,0 +1,108 @@
+/*
+	Call of Duty 4: Surf Mod
+	Copyright (C) 2016  Jordy Rymenants
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#include "ui/menudef.h"
+
+#include "ui_mp/menustyle.inc"
+#include "ui/choices_setup_common.menu"
+
+#include "ui_mp/surf_common.inc"
+{
+	menuDef
+	{
+		name			"ingame_main"
+		rect			FULLSCREEN_WIDE HORIZONTAL_ALIGN_FULLSCREEN VERTICAL_ALIGN_FULLSCREEN //0 0 640 480
+		focuscolor		COLOR_FOCUSED
+		style			WINDOW_STYLE_EMPTY
+		blurWorld		7.0
+		legacySplitScreenScale
+		
+		onOpen
+		{
+			execNow "set menuName Welcome";
+		}
+
+		onClose
+		{
+		}
+
+		onEsc
+		{
+			close self;
+		}
+		
+		#include "ui_mp/surf_menu_frame.inc"
+
+		SURF_BUTTON( "0", 60, 80, 188, 28, "Join Game", scriptMenuResponse "autoassign";, 1 )
+		SURF_BUTTON( "1", 60, 116, 188, 28, "Spectate", scriptMenuResponse "spectator";, 1 )
+		SURF_BUTTON( "2", 60, 152, 188, 28, "Customization", close self; open customization;, 1 )
+		SURF_BUTTON( "3", 60, 188, 188, 28, "Call Vote", close self; open call_vote;, 1 )
+		SURF_BUTTON( "4", 60, 224, 188, 28, "Options", close self; open main_options;, 1 )
+		SURF_BUTTON( "5", 60, 260, 188, 28, "Controls", close self; open main_controls;, 1 )
+		SURF_BUTTON( "6", 60, 296, 188, 28, "Leave Game", open popup_endgame;, 1 )
+
+		// Mod info background
+		itemDef
+		{
+			rect 			-280 94 350 338 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			style			WINDOW_STYLE_FILLED
+			forecolor		1 1 1 1
+			backcolor		0 0 0 0.7
+			visible			1
+			decoration
+		}
+
+		// Mapname text
+		itemDef
+		{
+			visible 		1
+			rect 			-105 126 1 1 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			origin 			0 0
+			forecolor 		1 1 1 1
+			exp 			text( dvarString( "mapname" ) )
+			textfont 		UI_FONT_NORMAL
+			textalign 		ITEM_ALIGN_CENTER
+			textscale 		0.5
+			decoration
+		}
+
+		itemDef 
+		{
+			rect 			-248 134 286 161 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			style			WINDOW_STYLE_SHADER
+			exp				material( "$levelBriefing" )
+			forecolor		1 1 1 1
+			visible			1
+			decoration
+		}
+
+		itemDef
+		{
+			name			"motd"
+			visible			1
+			rect			-248 320 286 140 HORIZONTAL_ALIGN_RIGHT VERTICAL_ALIGN_TOP
+			forecolor		1 1 1 1
+			autowrapped
+			exp				text( dvarString( "surf_motd" ) )
+			textfont		UI_FONT_OBJECTIVE
+			textscale		.32
+			textalign		ITEM_ALIGN_CENTER
+			decoration
+		}
+	}
+}
