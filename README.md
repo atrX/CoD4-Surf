@@ -23,12 +23,12 @@ This software is released under the GNU General Public License v3.0
 > Import the provided "cod4_surf.sql" file into a database of your choice (preferably a newly created, empty one)
 
 ### B3 Plugin
-> Place "cod4surf.py" in "%b3%/b3/extplugins"
+> Place "surf.py" in "%b3%/b3/extplugins"
 
 > Open up your b3 config file (eg: "%b3%/b3/conf/b3.xml") and place the following line in the plugins section:
 
 ``` xml
-<plugin name="cod4surf"/>
+<plugin name="surf"/>
 ```
 
 ### Mod
