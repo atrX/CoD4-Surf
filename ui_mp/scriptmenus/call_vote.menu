@@ -45,8 +45,9 @@
 		
 		#include "ui_mp/surf_menu_frame.inc"
 
-		SURF_BUTTON( "0", 60, 80, 188, 28, "Restart Map", close self; exec "cmd callvote map_restart";, 1 )
-		SURF_BUTTON( "1", 60, 116, 188, 28, "Next Map", close self; exec "cmd callvote map_rotate";, 1 )
-		SURF_BUTTON( "2", 60, 152, 188, 28, "Back", close self; open ingame_main;, 1 )
+		//SURF_BUTTON( "0", 60, 80, 188, 28, "Restart Map", close self; exec "cmd callvote map_restart"; scriptMenuResponse "surf_save_rank";, 1 )
+		//SURF_BUTTON( "1", 60, 116, 188, 28, "Next Map", close self; exec "cmd callvote map_rotate"; scriptMenuResponse "surf_save_rank";, 1 )
+		SURF_BUTTON( "0", 60, 80, 188, 28, "Extend Time", close self; scriptMenuResponse "surf_vote_extend";, 1 )
+		SURF_BUTTON( "1", 60, 116, 188, 28, "Back", close self; open ingame_main;, 1 )
 	}
 }
