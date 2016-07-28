@@ -25,7 +25,57 @@ onPlayerConnect() {
 
 	for(;;) {
 		level waittill( "connected", player );
+		
+		thread b3();
 		player thread trackB3();
+	}
+}
+
+b3() {
+	for(;;) {
+		if( getDvar( "surf_setrank_id" ) != "" ) {
+			player = getEntByNum( getDvarInt( "surf_setrank_id" ) );
+			rankId = getDvarInt( "surf_setrank_rank" ) - 1;
+			
+			if( player.pers[ "rank" ] > rankId ) {
+				// Reset stuff
+			}
+			
+			newXp = surf\_rank::getRankInfoMinXP( rankId );
+			
+			if( newXp >= surf\_rank::getRankInfoMaxXP( level.maxRank ) )
+				newXp = surf\_rank::getRankInfoMaxXP( level.maxRank );
+		
+			player.pers[ "rankxp" ] = newXp;
+			player maps\mp\gametypes\_persistence::statSet( "rankxp", newXp );
+		
+			rankId = player surf\_rank::getRankForXp( newXp );
+			player.pers[ "rank" ] = rankId;
+			player setStat( 252, rankId );
+			player setRank( rankId );
+
+			httpPostRequestAsync(
+				level.dvar[ "surf_api_host" ],
+				80,
+				"sys/cod4/backend.php?action=surfsaverank",
+				"apikey=" + level.dvar[ "surf_api_key" ] +
+				"&guid=" + player getGuid() +
+				"&name=" + surf\_util::stripColor( player.name ) +
+				"&rankxp=" + newXp +
+				"&rank=" + ( rankId + 1 )
+			);
+			
+			setDvar( "surf_setrank_id", "" );
+			setDvar( "surf_setrank_rank", "" );
+		}
+		
+		if( getDvarInt( "surf_extend_timer" ) == 1 ) {
+			thread surf\_vote::extendTimer();
+			
+			setDvar( "surf_extend_timer", 0 );
+		}
+		
+		wait .1;
 	}
 }
 

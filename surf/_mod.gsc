@@ -211,7 +211,7 @@ Callback_PlayerConnect() {
 	if( !isDefined( self.pers[ "rankxp" ] ) )
 		self.pers[ "rankxp" ] = 0;
 	self.pers[ "rankxp" ] = int( self.pers[ "rankxp" ] );
-	rankId = self surf\_rank::getRankForXp( self.pers[ "rankxp" ] );
+	rankId = surf\_rank::getRankForXp( self.pers[ "rankxp" ] );
 	self.pers[ "rank" ] = rankId;
 	surf\_rank::updateRankStats( self, rankId );
 
@@ -460,6 +460,7 @@ setCustomization() {
 
 startGame() {
 	level.starttime = getTime();
+	level.timeLeft = level.timelimit;
 
 	if( level.timelimit > 0 ) {
 		level.clock = newHudElem();
@@ -499,6 +500,11 @@ checkTimeLimit() {
 
 	timepassed = ( getTime() - level.starttime ) / 1000;
 	timepassed = timepassed / 60.0;
+	level.timeLeft = level.timelimit - timepassed;
+	
+	if( isDefined( level.updateTimer ) && level.updateTimer ) {
+		level.clock setTimer( level.timeLeft * 60 );
+	}
 
 	if( timepassed < level.timelimit )
 		return;

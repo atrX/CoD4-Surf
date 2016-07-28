@@ -21,6 +21,8 @@
 main() {
 	setDvar( "surf_votemap", "0" );
 
+	level.surfTimerExtended = false;
+	
 	thread monitor();
 	
 	rotation = [];
@@ -159,4 +161,63 @@ setMapvoteDvar( dvar, value ) {
 	players = getEntArray( "player", "classname" );
 	for( i = 0; i < players.size; i++ )
 		players[i] setClientDvar( dvar, value );
+}
+
+extendTimer() {
+	if( level.surfTimerExtended ) {
+		iPrintLn( "Timer has already been extended." );
+		return;
+	}
+	
+	if( isDefined( level.extendTimerVoteStarted ) && level.extendTimerVoteStarted ) {
+		iPrintln( "A vote to extend the timer is already in progress." );
+		return;
+	}
+	
+	level.extendTimerVoteStarted = true;
+	level.extendTimerVotes = [];
+	
+	// Open vote menu and start monitoring menuresponses
+	players = getEntArray( "player", "classname" );
+	for( i = 0; i < players.size; i++ ) {
+		players[i] thread extendTimerTrack();
+		players[i] openMenu( game[ "menu_extend_timer" ] );
+	}
+
+	wait( level.dvar[ "surf_mapvote_time" ] );
+	level notify( "extend_timer_vote_ended" );
+
+	votes = [];
+	votes[ "yes" ] = 0;
+	votes[ "no" ] = 0;
+	
+	for( i = 0; i < level.extendTimerVotes.size; i++ ) {
+		if( level.extendTimerVotes[i] == 0 )
+			votes[ "yes" ]++;
+		else
+			votes[ "no" ]++;
+	}
+	
+	if( votes[ "yes" ] > votes[ "no" ] ) {
+		level.timelimit += level.dvar[ "surf_extend_timer_time" ];
+		level.updateTimer = true;
+		level.surfTimerExtended = true;
+		
+		iPrintLn( "Map timer was extended as the result of a vote." );
+	}
+	
+	level.extendTimerVoteStarted = false;
+}
+
+extendTimerTrack() {
+	level endon( "extend_timer_vote_ended" );
+
+	for(;;) {
+		self waittill( "menuresponse", menu, response );
+
+		if( menu == game[ "menu_extend_timer" ] ) {
+			level.extendTimerVotes[ level.extendTimerVotes.size ] = int( response );
+			break;
+		}
+	}
 }

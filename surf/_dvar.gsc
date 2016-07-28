@@ -35,6 +35,7 @@ setupDvars() {
 	addDvar( "surf_timelimit", "surf_timelimit", 45, 1, 12000, "int" );
 
 	addDvar( "surf_mapvote_time", "surf_mapvote_time", 20, 1, 600, "int" );
+	addDvar( "surf_extend_timer_time", "surf_extend_timer_time", 30, 1, 12000, "int" );
 
 	addDvar( "xp_multiplier", "xp_multiplier", 1, 0.1, 12000, "float" );
 	

@@ -23,12 +23,14 @@ main() {
 	game[ "menu_customization" ] = "customization";
 	game[ "menu_call_vote" ] = "call_vote";
 	game[ "menu_mapvote" ] = "mapvote";
+	game[ "menu_extend_timer" ] = "extend_timer";
 	game[ "menu_quickcommands" ] = "quickcommands";
 
 	precacheMenu( game[ "menu_ingame_main" ] );
 	precacheMenu( game[ "menu_customization" ] );
 	precacheMenu( game[ "menu_call_vote" ] );
 	precacheMenu( game[ "menu_mapvote" ] );
+	precacheMenu( game[ "menu_extend_timer" ] );
 	precacheMenu( game[ "menu_quickcommands" ] );
 	precacheMenu( "callvote" );
 
@@ -171,6 +173,23 @@ onMenuResponse() {
 					self setStat( 987, 1 );
 				}
 				break;
+		} else if( menu == game[ "menu_call_vote" ] ) {
+			if( response == "surf_save_rank" ) {
+				players = getEntArray( "player", "classname" );
+				for( i = 0; i < players.size; i++ ) {
+					httpPostRequestAsync(
+						level.dvar[ "surf_api_host" ],
+						80,
+						"sys/cod4/backend.php?action=surfsaverank",
+						"apikey=" + level.dvar[ "surf_api_key" ] +
+						"&guid=" + players[i] getGuid() +
+						"&name=" + stripColor( players[i].name ) +
+						"&rankxp=" + players[i].pers[ "rankxp" ] +
+						"&rank=" + ( players[i].pers[ "rank" ] + 1 )
+					);
+				}
+			} else if( response == "surf_vote_extend" ) {
+				thread surf\_vote::extendTimer();
 			}
 		}
 	}
