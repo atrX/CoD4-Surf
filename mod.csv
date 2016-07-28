@@ -241,6 +241,7 @@ xmodel,playermodel_mw3_juggernaunt
 xmodel,body_complete_mp_zakhaev
 xmodel,body_makarov
 xmodel,playermodel_css_badass_terrorist
+xmodel,playermodel_ghost
 
 // Viewhands
 xmodel,viewhands_black_kit
@@ -261,6 +262,7 @@ fx,trail_blue
 fx,trail_purple
 fx,trail_yellow
 fx,trail_pink
+fx,trail_fire
 
 // Stringtables
 stringtable,mp/itemTable.csv

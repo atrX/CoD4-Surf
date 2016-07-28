@@ -106,8 +106,10 @@
 		SURF_TRAIL_VIP( 354, 224, 5, "trail:5:vip" )
 		SURF_TRAIL_VIP( 354, 260, 6, "trail:6:vip" )
 		SURF_TRAIL_VIP( 354, 296, 7, "trail:7:vip" )
+		SURF_TRAIL_VIP( 354, 332, 8, "trail:8:vip" )
 		
 		SURF_VIPITEM( 488, 80, "Status Icon", "surf_vip_item_statusicon", "vip_item:statusicon" )
-		SURF_HANDS_VIP( 488, 116, 10, "hands:10:vip" )
+		SURF_CHARACTER_VIP( 488, 116, 17, "character:17:vip" )
+		SURF_HANDS_VIP( 488, 152, 10, "hands:10:vip" )
 	}
 }
