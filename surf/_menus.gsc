@@ -173,6 +173,31 @@ onMenuResponse() {
 					self setStat( 987, 1 );
 				}
 				break;
+			
+			case "toggle_hud":
+				if( self getStat( 986 ) == 1 ) {
+					self iPrintln( "Show HUD Enabled" );
+					self setClientDvar( "cg_draw2d", 0 );
+					self setStat( 986, 0 );
+				} else {
+					self iPrintln( "Show HUD Disabled" );
+					self setClientDvar( "cg_draw2d", 1 );
+					self setStat( 986, 1 );
+				}
+				break;
+			
+			case "toggle_gun":
+				if( self getStat( 985 ) == 1 ) {
+					self iPrintln( "Show Gun Enabled" );
+					self setClientDvar( "cg_drawgun", 0 );
+					self setStat( 985, 0 );
+				} else {
+					self iPrintln( "Show Gun Disabled" );
+					self setClientDvar( "cg_drawgun", 1 );
+					self setStat( 985, 1 );
+				}
+				break;
+			}
 		} else if( menu == game[ "menu_call_vote" ] ) {
 			if( response == "surf_save_rank" ) {
 				players = getEntArray( "player", "classname" );

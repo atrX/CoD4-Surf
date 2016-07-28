@@ -75,6 +75,8 @@
 		CHOICE_DVARSLIDER( 26, "Field of View", cg_fov, 65, 65, 80, ; )
 		CHOICE_DVARSLIDER( 27, "Field of View Scale", cg_fovscale, 1, 1, 1.3, ; )
 		CHOICE_DVARYESNO( 28, "Third Person", cg_thirdPerson, ; )
+		CHOICE_DVARYESNO( 29, "Show HUD", cg_draw2D, ; )
+		CHOICE_DVARYESNO( 30, "Show Gun", cg_drawGun, ; )
 
 		CHOICE_APPLY_VIS( "@MENU_APPLY_LANGUAGE_CHANGE", open language_restart_popmenu, when ( dvarint( ui_languageChanged ) ) )		
 		//CHOICE_BACK( "@MENU_BACK", close self )
