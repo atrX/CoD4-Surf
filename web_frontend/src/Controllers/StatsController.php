@@ -27,7 +27,7 @@ class StatsController extends AppController {
 					$records = array();
 					foreach( $maps as $map ) {
 						$newRecord = $this->app->DB->query(
-							"SELECT id, maptime, player_id, map
+							"SELECT any_value(id) AS id, min(maptime) AS maptime, any_value(player_id) AS player_id, any_value(map) AS map
 							FROM surf_records WHERE player_id='" . $player[ 'id' ] . "' AND map='" . $map[ 'map' ] . "'
 							GROUP BY map
 							ORDER BY maptime ASC"

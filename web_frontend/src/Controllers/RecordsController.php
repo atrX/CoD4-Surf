@@ -16,7 +16,7 @@ class RecordsController extends AppController {
 		}
 
 		if( !isset( $args[1] ) || $args[1] != 'all' ) {
-			$records = $this->app->DB->query( "SELECT id, MIN(maptime) AS maptime, player_id, map FROM surf_records WHERE map='" . $args[0] . "' GROUP BY player_id ORDER BY maptime ASC" );
+			$records = $this->app->DB->query( "SELECT any_value(id) AS id, min(maptime) AS maptime, any_value(player_id) AS player_id, any_value(map) AS map FROM surf_records WHERE map='" . $args[0] . "' GROUP BY player_id ORDER BY maptime ASC" );
 		} else {
 			$records = $this->app->DB->query( "SELECT * FROM surf_records WHERE map='" . $args[0] . "' ORDER BY maptime ASC" );
 		}
