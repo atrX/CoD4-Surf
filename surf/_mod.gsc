@@ -37,7 +37,7 @@ main() {
 	level.xenon = false;
 	level.ps3 = false;
 	level.console = false;
-	level.teamBased = false;
+	level.teamBased = true;
 	level.onlineGame = true;
 	level.oldschool = false;
 	level.rankedMatch = getDvarInt( "sv_pure" );
@@ -282,6 +282,31 @@ Callback_PlayerDisconnect() {
 	}
 }
 
+Callback_PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration ) {
+	self endon( "spawned" );
+	self notify( "death" );
+	
+	if( self.sessionteam == "spectator" )
+		return;
+		
+	if( sHitLoc == "head" && sMeansOfDeath != "MOD_MELEE" )
+		sMeansOfDeath = "MOD_HEAD_SHOT";
+
+	self.sessionstate = "dead";
+	self.statusicon = "hud_status_dead";
+	
+	self allowSpectateTeam( "allies", false );
+	self allowSpectateTeam( "axis", false );
+	self allowSpectateTeam( "freelook", false );
+	self allowSpectateTeam( "none", true );
+
+	obituary( self, attacker, sWeapon, sMeansOfDeath );
+
+	wait .1;
+	
+	self respawn();
+}
+
 spawnPlayer() {
 	self endon( "disconnect" );
 	self notify( "spawned" );
@@ -293,6 +318,7 @@ spawnPlayer() {
 	self stopShellShock();
 
 	self.pers[ "team" ] = "allies";
+	self.team = self.pers[ "team" ];
 	self.sessionteam = "allies";
 	self.sessionstate = "playing";
 	self.spectatorclient = -1;
@@ -399,6 +425,9 @@ spawnSpectator( origin, angles ) {
 
 	if( isDefined( self.speedHud ) )
 		self.speedHud destroy();
+	
+	if( isDefined( self.spectatorList ) )
+		self.spectatorList destroy();
 
 	if( isDefined( origin ) && isDefined( angles ) )
 		self spawn( origin, angles );
