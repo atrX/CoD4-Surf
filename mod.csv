@@ -293,7 +293,7 @@ menufile,ui_mp/scriptmenus/customization.menu
 menufile,ui_mp/scriptmenus/call_vote.menu
 menufile,ui_mp/scriptmenus/mapvote.menu
 menufile,ui_mp/scriptmenus/extend_timer.menu
-menufile,ui_mp/scriptmenus/quickcommands.menu
+menufile,ui_mp/scriptmenus/quickactions.menu
 
 menufile,ui/options_game_pc.menu
 

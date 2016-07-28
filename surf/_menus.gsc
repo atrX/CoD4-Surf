@@ -24,14 +24,14 @@ main() {
 	game[ "menu_call_vote" ] = "call_vote";
 	game[ "menu_mapvote" ] = "mapvote";
 	game[ "menu_extend_timer" ] = "extend_timer";
-	game[ "menu_quickcommands" ] = "quickcommands";
+	game[ "menu_quickactions" ] = "quickactions";
 
 	precacheMenu( game[ "menu_ingame_main" ] );
 	precacheMenu( game[ "menu_customization" ] );
 	precacheMenu( game[ "menu_call_vote" ] );
 	precacheMenu( game[ "menu_mapvote" ] );
 	precacheMenu( game[ "menu_extend_timer" ] );
-	precacheMenu( game[ "menu_quickcommands" ] );
+	precacheMenu( game[ "menu_quickactions" ] );
 	precacheMenu( "callvote" );
 
 	precacheShader( "black" );
@@ -134,7 +134,7 @@ onMenuResponse() {
 				self surf\_vip::toggleVipItem( id );
 				break;
 			}
-		} else if( menu == game[ "menu_quickcommands" ] ) {
+		} else if( menu == game[ "menu_quickactions" ] ) {
 			switch( response ) {
 			case "3rdperson":
 				if( self getStat( 988 ) == 0 ) {
@@ -177,11 +177,11 @@ onMenuResponse() {
 			case "toggle_hud":
 				if( self getStat( 986 ) == 1 ) {
 					self iPrintln( "Show HUD Enabled" );
-					self setClientDvar( "cg_draw2d", 0 );
+					self setClientDvar( "cg_draw2d", 1 );
 					self setStat( 986, 0 );
 				} else {
 					self iPrintln( "Show HUD Disabled" );
-					self setClientDvar( "cg_draw2d", 1 );
+					self setClientDvar( "cg_draw2d", 0 );
 					self setStat( 986, 1 );
 				}
 				break;
@@ -189,11 +189,11 @@ onMenuResponse() {
 			case "toggle_gun":
 				if( self getStat( 985 ) == 1 ) {
 					self iPrintln( "Show Gun Enabled" );
-					self setClientDvar( "cg_drawgun", 0 );
+					self setClientDvar( "cg_drawgun", 1 );
 					self setStat( 985, 0 );
 				} else {
 					self iPrintln( "Show Gun Disabled" );
-					self setClientDvar( "cg_drawgun", 1 );
+					self setClientDvar( "cg_drawgun", 0 );
 					self setStat( 985, 1 );
 				}
 				break;

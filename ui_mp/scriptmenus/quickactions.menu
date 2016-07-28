@@ -38,7 +38,7 @@
 {
 	menuDef
 	{
-		IMPROVED_POPUP_SETUP_ONOPEN( quickcommands, 6, 4, 292, ;, setDvar cl_bypassMouseInput "1";, 0 )
+		IMPROVED_POPUP_SETUP_ONOPEN( quickactions, 10, 4, 210, ;, setDvar cl_bypassMouseInput "1";, 0 )
 		onClose{ setDvar cl_bypassMouseInput "0" }
 		
 		CHOICE_POPMENU_TITLE( "Player Menu" )
@@ -57,7 +57,7 @@
 			text			"1. Third Person"
 			decoration
 		}
-		execKey "1" { scriptMenuResponse "3rdperson"; close quickcommands }
+		execKey "1" { scriptMenuResponse "3rdperson"; close quickactions }
 	
 		itemDef
 		{
@@ -73,7 +73,7 @@
 			text			"2. Restart"
 			decoration
 		}
-		execKey "2" { scriptMenuResponse "restart"; close quickcommands }
+		execKey "2" { scriptMenuResponse "restart"; close quickactions }
 
 		itemDef
 		{
@@ -89,7 +89,7 @@
 			text			"3. Fullbright"
 			decoration
 		}
-		execKey "3" { scriptMenuResponse "fullbright"; close quickcommands }
+		execKey "3" { scriptMenuResponse "fullbright"; close quickactions }
 
 		itemDef
 		{
@@ -105,7 +105,7 @@
 			text			"4. Spectator Names"
 			decoration
 		}
-		execKey "4" { scriptMenuResponse "spectator_names"; close quickcommands }
+		execKey "4" { scriptMenuResponse "spectator_names"; close quickactions }
 
 		itemDef
 		{
@@ -121,7 +121,7 @@
 			text			"5. Show/Hide HUD"
 			decoration
 		}
-		execKey "5" { scriptMenuResponse "toggle_hud"; close quickcommands }
+		execKey "5" { scriptMenuResponse "toggle_hud"; close quickactions }
 
 		itemDef
 		{
@@ -137,13 +137,13 @@
 			text			"6. Show/Hide Gun"
 			decoration
 		}
-		execKey "6" { scriptMenuResponse "toggle_gun"; close quickcommands }
+		execKey "6" { scriptMenuResponse "toggle_gun"; close quickactions }
 
 		itemDef
 		{
 			name			"window"
 			visible			1
-			rect			16 116 0 0
+			rect			16 132 0 0
 			origin			ORIGIN_quickcommandsWINDOW
 			forecolor		1 1 1 1
 			textfont		UI_FONT_NORMAL

@@ -243,9 +243,9 @@ Callback_PlayerConnect() {
 		self setClientDvar( "cg_thirdperson", 1 );
 	if( self getStat( 989 ) == 1 )
 		self setClientDvar( "r_fullbright", 1 );
-	if( self getStat( 986 ) == 0 )
+	if( self getStat( 986 ) == 1 )
 		self setClientDvar( "cg_draw2d", 0 );
-	if( self getStat( 985 ) == 0 )
+	if( self getStat( 985 ) == 1 )
 		self setClientDvar( "cg_drawgun", 0 );
 
 	self thread maps\mp\gametypes\_hud_message::initNotifyMessage();

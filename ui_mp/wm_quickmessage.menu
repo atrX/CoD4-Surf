@@ -38,7 +38,7 @@
 {
 	menuDef
 	{
-		IMPROVED_POPUP_SETUP_ONOPEN( quickmessage, 6, 4, 292, ;, setDvar cl_bypassMouseInput "1";, 0 )
+		IMPROVED_POPUP_SETUP_ONOPEN( quickmessage, 10, 4, 210, ;, setDvar cl_bypassMouseInput "1";, 0 )
 		onClose{ setDvar cl_bypassMouseInput "0" }
 		
 		CHOICE_POPMENU_TITLE( "@QUICKMESSAGE_QUICK_MESSAGE" )
@@ -105,13 +105,13 @@
 			text			"4. Player Menu"
 			decoration
 		}
-		execKey "4" { close quickmessage; open quickcommands }
+		execKey "4" { close quickmessage; open quickactions }
 
 		itemDef
 		{
 			name			"window"
 			visible			1
-			rect			16 84 0 0
+			rect			16 100 0 0
 			origin			ORIGIN_QUICKMESSAGEWINDOW
 			forecolor		1 1 1 1
 			textfont		UI_FONT_NORMAL
