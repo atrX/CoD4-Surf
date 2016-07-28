@@ -46,9 +46,6 @@ main() {
 	thread maps\mp\gametypes\_clientids::init();
 	thread maps\mp\gametypes\_quickmessages::init();
 	thread maps\mp\gametypes\_hud::init();
-	
-	//start b3 poweradmin
-	thread b3\_b3_main::Init();
 
 	surf\_dvar::setupDvars();
 	surf\_vip::main();
