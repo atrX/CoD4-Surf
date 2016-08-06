@@ -18,7 +18,7 @@
 
 bunnyhop() {
 	self endon( "disconnect" );
-	self endon( "spawned_player" );
+	self endon( "spawned" );
 
 	hopHeight = sqrt( 40 * getDvarInt( "g_gravity" ) );
 

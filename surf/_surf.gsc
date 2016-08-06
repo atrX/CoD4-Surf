@@ -18,7 +18,7 @@
 
 surf() {
 	self endon( "disconnect" );
-	self endon( "spawned_player" );
+	self endon( "spawned" );
 	
 	self.isSurfing = false;
 	
