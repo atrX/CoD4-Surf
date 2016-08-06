@@ -113,6 +113,13 @@ mapvote() {
 
 	wait( level.dvar[ "surf_mapvote_time" ] );
 	level notify( "mapvote_ended" );
+	
+	// Close menu
+	players = getEntArray( "player", "classname" );
+	for( i = 0; i < players.size; i++ ) {
+		players[i] closeMenu();
+		players[i] closeInGameMenu();
+	}
 
 	winner = level.mapvoteMaps[0];
 	for( i = 1; i < level.mapvoteMaps.size; i++ ) {
@@ -204,9 +211,18 @@ extendTimer() {
 		level.surfTimerExtended = true;
 		
 		iPrintLn( "Map timer was extended as the result of a vote." );
+	} else {
+		iPrintLn( "Vote failed." );
 	}
 	
 	level.extendTimerVoteStarted = false;
+	
+	// Close menu
+	players = getEntArray( "player", "classname" );
+	for( i = 0; i < players.size; i++ ) {
+		players[i] closeMenu();
+		players[i] closeInGameMenu();
+	}
 }
 
 extendTimerTrack() {
