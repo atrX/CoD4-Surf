@@ -228,26 +228,6 @@ Callback_PlayerConnect() {
 
 	self setClientDvar( "surf_player_vip", self surf\_vip::isVip() );
 
-	if( !self surf\_items::itemUnlocked( self getStat( 100 ) ) )
-		self setStat( 100, 0 );
-	if( !self surf\_items::characterUnlocked( self getStat( 101 ) ) )
-		self setStat( 101, 0 );
-	if( !self surf\_items::handsUnlocked( self getStat( 102 ) ) )
-		self setStat( 102, 0 );
-	if( !self surf\_items::knifeUnlocked( self getStat( 103 ) ) )
-		self setStat( 103, 0 );
-	if( !self surf\_items::trailUnlocked( self getStat( 104 ) ) )
-		self setStat( 104, 0 );
-		
-	if( self getStat( 988 ) == 1 )
-		self setClientDvar( "cg_thirdperson", 1 );
-	if( self getStat( 989 ) == 1 )
-		self setClientDvar( "r_fullbright", 1 );
-	if( self getStat( 986 ) == 1 )
-		self setClientDvar( "cg_draw2d", 0 );
-	if( self getStat( 985 ) == 1 )
-		self setClientDvar( "cg_drawgun", 0 );
-
 	self thread maps\mp\gametypes\_hud_message::initNotifyMessage();
 	
 	self.joined = true;
@@ -321,11 +301,31 @@ spawnPlayer() {
 	self.spectatorclient = -1;
 	self.statusicon = "";
 
+	if( !self surf\_items::itemUnlocked( self getStat( 100 ) ) )
+		self setStat( 100, 0 );
+	if( !self surf\_items::characterUnlocked( self getStat( 101 ) ) )
+		self setStat( 101, 0 );
+	if( !self surf\_items::handsUnlocked( self getStat( 102 ) ) )
+		self setStat( 102, 0 );
+	if( !self surf\_items::knifeUnlocked( self getStat( 103 ) ) )
+		self setStat( 103, 0 );
+	if( !self surf\_items::trailUnlocked( self getStat( 104 ) ) )
+		self setStat( 104, 0 );
+
 	self.pers[ "weapon" ] = self getStat( 100 );
 	self.pers[ "character" ] = self getStat( 101 );
 	self.pers[ "hands" ] = self getStat( 102 );
 	self.pers[ "knife" ] = self getStat( 103 );
 	self.pers[ "trail" ] = self getStat( 104 );
+	
+	if( self getStat( 988 ) == 1 )
+		self setClientDvar( "cg_thirdperson", 1 );
+	if( self getStat( 989 ) == 1 )
+		self setClientDvar( "r_fullbright", 1 );
+	if( self getStat( 986 ) == 1 )
+		self setClientDvar( "cg_draw2d", 0 );
+	if( self getStat( 985 ) == 1 )
+		self setClientDvar( "cg_drawgun", 0 );
 
 	// Check if somehow a non-vip got access to a vip item
 	// (eg: when one was vip but no longer is)
