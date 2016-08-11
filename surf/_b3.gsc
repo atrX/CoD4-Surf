@@ -54,7 +54,7 @@ b3() {
 			player setStat( 252, rankId );
 			player setRank( rankId );
 
-			httpPostRequestAsync(
+			httpPostRequest(
 				level.dvar[ "surf_api_host" ],
 				80,
 				"sys/cod4/backend.php?action=surfsaverank",
@@ -62,7 +62,8 @@ b3() {
 				"&guid=" + player getGuid() +
 				"&name=" + surf\_util::stripColor( player.name ) +
 				"&rankxp=" + newXp +
-				"&rank=" + ( rankId + 1 )
+				"&rank=" + ( rankId + 1 ),
+				false
 			);
 			
 			setDvar( "surf_setrank_id", "" );

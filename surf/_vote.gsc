@@ -130,7 +130,7 @@ mapvote() {
 	// We'll want to update people's ranks in the database
 	players = getEntArray( "player", "classname" );
 	for( i = 0; i < players.size; i++ ) {
-		httpPostRequestAsync(
+		httpPostRequest(
 			level.dvar[ "surf_api_host" ],
 			80,
 			"sys/cod4/backend.php?action=surfsaverank",
@@ -138,7 +138,8 @@ mapvote() {
 			"&guid=" + players[i] getGuid() +
 			"&name=" + stripColor( players[i].name ) +
 			"&rankxp=" + players[i].pers[ "rankxp" ] +
-			"&rank=" + ( players[i].pers[ "rank" ] + 1 )
+			"&rank=" + ( players[i].pers[ "rank" ] + 1 ),
+			false
 		);
 	}
 

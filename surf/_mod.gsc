@@ -246,7 +246,7 @@ Callback_PlayerDisconnect() {
 	logPrint( "Q;" + self getGuid() + ";" + self getEntityNumber() + ";" + self.name + "\n" );
 	
 	if( isDefined( self.joined ) ) {
-		httpPostRequestAsync(
+		httpPostRequest(
 			level.dvar[ "surf_api_host" ],
 			80,
 			"sys/cod4/backend.php?action=surfsaverank",
@@ -254,7 +254,8 @@ Callback_PlayerDisconnect() {
 			"&guid=" + self getGuid() +
 			"&name=" + stripColor( self.name ) +
 			"&rankxp=" + self.pers[ "rankxp" ] +
-			"&rank=" + ( self.pers[ "rank" ] + 1 )
+			"&rank=" + ( self.pers[ "rank" ] + 1 ),
+			false
 		);
 	}
 }

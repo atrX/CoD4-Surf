@@ -202,7 +202,7 @@ onMenuResponse() {
 			if( response == "surf_save_rank" ) {
 				players = getEntArray( "player", "classname" );
 				for( i = 0; i < players.size; i++ ) {
-					httpPostRequestAsync(
+					httpPostRequest(
 						level.dvar[ "surf_api_host" ],
 						80,
 						"sys/cod4/backend.php?action=surfsaverank",
@@ -210,7 +210,8 @@ onMenuResponse() {
 						"&guid=" + players[i] getGuid() +
 						"&name=" + stripColor( players[i].name ) +
 						"&rankxp=" + players[i].pers[ "rankxp" ] +
-						"&rank=" + ( players[i].pers[ "rank" ] + 1 )
+						"&rank=" + ( players[i].pers[ "rank" ] + 1 ),
+						false
 					);
 				}
 			} else if( response == "surf_vote_extend" ) {

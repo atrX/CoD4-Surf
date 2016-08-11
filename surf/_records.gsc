@@ -194,14 +194,15 @@ endmapTrigger() {
 	self.score++;
 
 	if( isDefined( self.startTime ) ) {
-		httpPostRequestAsync(
+		httpPostRequest(
 			level.dvar[ "surf_api_host" ],
 			80,
 			"sys/cod4/backend.php?action=surfsubmitrecord",
 			"apikey=" + level.dvar[ "surf_api_key" ] +
 			"&guid=" + self getGuid() + "&name=" + stripColor( self.name ) +
 			"&mapname=" + level.script +
-			"&maptime=" + maptime
+			"&maptime=" + maptime,
+			false
 		);
 	}
 }
