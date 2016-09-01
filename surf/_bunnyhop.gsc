@@ -37,8 +37,8 @@ bunnyhop() {
 				playerVel = vectorScale( vectorNormalize( playerVel ), playerSpeed );
 			}
 			
-			if( self inNoHopZone() && playerSpeed > 300 ) {
-				playerSpeed = 250;
+			if( self inNoHopZone() && playerSpeed > 320 ) {
+				playerSpeed = 280;
 				playerVel = vectorScale( vectorNormalize( playerVel ), playerSpeed );
 			}
 

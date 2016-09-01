@@ -217,6 +217,13 @@ onMenuResponse() {
 			} else if( response == "surf_vote_extend" ) {
 				thread surf\_vote::extendTimer();
 			}
+		} else if ( !level.console ) {
+			if( menu == game[ "menu_quickcommands" ] )
+				maps\mp\gametypes\_quickmessages::quickcommands( response );
+			else if( menu == game[ "menu_quickstatements" ] )
+				maps\mp\gametypes\_quickmessages::quickstatements( response );
+			else if( menu == game[ "menu_quickresponses" ] )
+				maps\mp\gametypes\_quickmessages::quickresponses( response );
 		}
 	}
 }

@@ -26,6 +26,9 @@ setupDvars() {
 	setDvar( "jump_slowdownEnable", 0 );
 	setDvar( "g_deadChat", 1 );
 	
+	setDvar( "mod_author", "atrX" );
+	makeDvarServerInfo( "mod_author", "atrX" );
+	
 	setDvar( "g_TeamColor_Allies", "1 1 1 1" );
 	setDvar( "g_TeamName_Allies", "Surfers" );
 	setDvar( "g_TeamName_Axis", "" );

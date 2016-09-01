@@ -37,10 +37,6 @@ b3() {
 			player = getEntByNum( getDvarInt( "surf_setrank_id" ) );
 			rankId = getDvarInt( "surf_setrank_rank" ) - 1;
 			
-			if( player.pers[ "rank" ] > rankId ) {
-				// Reset stuff
-			}
-			
 			newXp = surf\_rank::getRankInfoMinXP( rankId );
 			
 			if( newXp >= surf\_rank::getRankInfoMaxXP( level.maxRank ) )
@@ -51,7 +47,7 @@ b3() {
 		
 			rankId = player surf\_rank::getRankForXp( newXp );
 			player.pers[ "rank" ] = rankId;
-			player setStat( 252, rankId );
+			player surf\_rank::updateRankStats( player, rankId );
 			player setRank( rankId );
 
 			httpPostRequest(

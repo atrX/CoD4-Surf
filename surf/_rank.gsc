@@ -205,11 +205,6 @@ updateRankStats( player, rankId ) {
 	player maps\mp\gametypes\_persistence::statSet( "rank", rankId );
 	player maps\mp\gametypes\_persistence::statSet( "minxp", getRankInfoMinXp( rankId ) );
 	player maps\mp\gametypes\_persistence::statSet( "maxxp", getRankInfoMaxXp( rankId ) );
-
-	if( rankId > level.maxRank )
-		player setStat( 252, level.maxRank );
-	else
-		player setStat( 252, rankId );
 }
 
 proceduralXp() {

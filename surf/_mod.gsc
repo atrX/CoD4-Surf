@@ -32,6 +32,7 @@ main() {
 		game[ "axis" ] = getDvar( "scr_axis" );
 
 	precacheStatusIcon( "hud_status_connecting" );
+	precacheStatusIcon( "hud_status_dead" );
 
 	level.splitscreen = isSplitScreen();
 	level.xenon = false;
@@ -211,8 +212,6 @@ Callback_PlayerConnect() {
 	rankId = surf\_rank::getRankForXp( self.pers[ "rankxp" ] );
 	self.pers[ "rank" ] = rankId;
 	surf\_rank::updateRankStats( self, rankId );
-
-	self setStat( 251, rankId );
 	self setRank( rankId );
 
 	/**
@@ -318,15 +317,6 @@ spawnPlayer() {
 	self.pers[ "hands" ] = self getStat( 102 );
 	self.pers[ "knife" ] = self getStat( 103 );
 	self.pers[ "trail" ] = self getStat( 104 );
-	
-	if( self getStat( 988 ) == 1 )
-		self setClientDvar( "cg_thirdperson", 1 );
-	if( self getStat( 989 ) == 1 )
-		self setClientDvar( "r_fullbright", 1 );
-	if( self getStat( 986 ) == 1 )
-		self setClientDvar( "cg_draw2d", 0 );
-	if( self getStat( 985 ) == 1 )
-		self setClientDvar( "cg_drawgun", 0 );
 
 	// Check if somehow a non-vip got access to a vip item
 	// (eg: when one was vip but no longer is)
@@ -396,6 +386,16 @@ spawnPlayer() {
 	self thread updateStats();
 
 	waittillframeend;
+	
+	if( self getStat( 988 ) == 1 )
+		self setClientDvar( "cg_thirdperson", 1 );
+	if( self getStat( 989 ) == 1 )
+		self setClientDvar( "r_fullbright", 1 );
+	if( self getStat( 986 ) == 1 )
+		self setClientDvar( "cg_draw2d", 0 );
+	if( self getStat( 985 ) == 1 )
+		self setClientDvar( "cg_drawgun", 0 );
+	
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
 
@@ -479,7 +479,6 @@ setCustomization() {
 	self giveWeapon( level.itemInfo[ self.pers[ "weapon" ] ][ "item" ] );
 	self giveMaxAmmo( level.itemInfo[ self.pers[ "weapon" ] ][ "item" ] );
 
-	// Don't give knife if primary is the knife
 	self giveWeapon( level.knivesInfo[ self.pers[ "knife" ] ][ "knife" ] );
 
 	wait .05;
