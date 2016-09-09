@@ -402,6 +402,9 @@ spawnPlayer() {
 
 	self thread surf\_surf::surf();
 	self thread surf\_bunnyhop::bunnyhop();
+	
+	if( level.dvar[ "surf_infinite_ammo" ] )
+		self thread infiniteAmmo();
 }
 
 spawnSpectator( origin, angles ) {
@@ -640,5 +643,16 @@ trail( fx ) {
 	for(;;) {
 		wait .05;
 		playFx( fx, self.origin );
+	}
+}
+
+infiniteAmmo() {
+	self endon( "disconnect" );
+	self endon( "spawned" );
+	
+	for(;;) {
+		self waittill( "weapon_fired" );
+		weapon = self getCurrentWeapon();
+		self setWeaponAmmoClip( weapon, weaponclipsize( weapon ) );
 	}
 }

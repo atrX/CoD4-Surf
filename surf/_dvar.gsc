@@ -43,6 +43,8 @@ setupDvars() {
 	addDvar( "xp_multiplier", "xp_multiplier", 1, 0.1, 12000, "float" );
 	
 	addDvar( "surf_record_print_interval", "surf_record_print_interval", 60, 1, 3600, "int" );
+	
+	addDvar( "surf_infinite_ammo", "surf_infinite_ammo", 1, 0, 1, "int" );
 
 	addDvar( "surf_api_host", "surf_api_host", "localhost", "", "", "string" );
 	addDvar( "surf_api_key", "surf_api_key", "e2SlkSVc4WgeinOzD6HgFncrWP4eH9wc", "", "", "string" );
