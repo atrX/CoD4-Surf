@@ -96,7 +96,7 @@ airStrafe() {
 	if( dot < 0 )
 		velMatchingDir = -1;
 
-	if( self isOnGround() || !( self leftButtonPressed() || self rightButtonPressed() ) )
+	if( self isOnGround() || ( !( self leftButtonPressed() || self rightButtonPressed() ) && !self.autoSurf ) )
 		return;
 	
 	vel = self getVelocity();

@@ -395,6 +395,7 @@ spawnPlayer() {
 		self setClientDvar( "cg_draw2d", 0 );
 	if( self getStat( 985 ) == 1 )
 		self setClientDvar( "cg_drawgun", 0 );
+	self.autoSurf = self getStat( 986 );
 	
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );

@@ -197,6 +197,18 @@ onMenuResponse() {
 					self setStat( 985, 1 );
 				}
 				break;
+			
+			case "toggle_auto_surf":
+				if( self getStat( 986 ) == 1 ) {
+					self iPrintln( "Auto Surf Disabled" );
+					self setStat( 986, 0 );
+					self.autoSurf = false;
+				} else {
+					self iPrintln( "Auto Surf Enabled" );
+					self setStat( 986, 1 );
+					self.autoSurf = true;
+				}
+				break;
 			}
 		} else if( menu == game[ "menu_call_vote" ] ) {
 			if( response == "surf_save_rank" ) {

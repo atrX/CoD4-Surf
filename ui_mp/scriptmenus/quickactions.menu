@@ -143,7 +143,23 @@
 		{
 			name			"window"
 			visible			1
-			rect			16 132 0 0
+			rect			16 116 0 0
+			origin			ORIGIN_quickcommandsWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"7. Auto Surf"
+			decoration
+		}
+		execKey "7" { scriptMenuResponse "toggle_auto_surf"; close quickactions }
+
+		itemDef
+		{
+			name			"window"
+			visible			1
+			rect			16 148 0 0
 			origin			ORIGIN_quickcommandsWINDOW
 			forecolor		1 1 1 1
 			textfont		UI_FONT_NORMAL
