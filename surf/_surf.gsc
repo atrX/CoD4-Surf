@@ -112,17 +112,28 @@ stopAirStrafe() {
 	self endon( "spawned_player" );
 	
 	for(;;) {
-		while( !isDefined( self.isSurfing ) || !self.isSurfing )
+		airTime = 0;
+		
+		while( self isOnGround() ) {
 			wait .05;
-			
-		while( self.isSurfing )
+		}
+		
+		while( ( !isDefined( self.isSurfing ) || !self.isSurfing ) && airTime < 1.5 ) {
+			if( self isOnGround() )
+				airTime = 0;
+			else
+				airTime += .05;
+				
 			wait .05;
+		}
 			
-		// At this point we've been on a surf
-		while( !self isOnGround() ) {
+		// At this point we've been on a surf or been in the air for long enough
+		while( !self isOnGround() || self.isSurfing ) {
 			if( self backButtonPressed() )
 				self setVelocity( self getVelocity() * ( 0, 0, 1 ) );
 			wait .05;
 		}
+		
+		wait .05;
 	}
 }
