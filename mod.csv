@@ -263,6 +263,7 @@ fx,trail_purple
 fx,trail_yellow
 fx,trail_pink
 fx,trail_fire
+fx,trail_paper
 
 // Stringtables
 stringtable,mp/itemTable.csv
