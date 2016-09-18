@@ -199,13 +199,13 @@ onMenuResponse() {
 				break;
 			
 			case "toggle_auto_surf":
-				if( self getStat( 986 ) == 1 ) {
+				if( self getStat( 984 ) == 1 ) {
 					self iPrintln( "Auto Surf Disabled" );
-					self setStat( 986, 0 );
+					self setStat( 984, 0 );
 					self.autoSurf = false;
 				} else {
 					self iPrintln( "Auto Surf Enabled" );
-					self setStat( 986, 1 );
+					self setStat( 984, 1 );
 					self.autoSurf = true;
 				}
 				break;
