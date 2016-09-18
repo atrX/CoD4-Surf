@@ -161,11 +161,11 @@ endmapTrigger() {
 	if( isDefined( level.surfDifficulty ) ) {
 		switch( level.surfDifficulty ) {
 		case "easy":
-			self surf\_rank::giveRankXP( 40 );
+			self surf\_rank::giveRankXP( 60 );
 			break;
 			
 		case "intermediate":
-			self surf\_rank::giveRankXP( 60 );
+			self surf\_rank::giveRankXP( 75 );
 			break;
 			
 		case "hard":

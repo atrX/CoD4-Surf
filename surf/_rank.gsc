@@ -218,6 +218,6 @@ proceduralXp() {
 		self.oldOrg = self.origin;
 		wait 60;
 		if( self.origin != self.oldOrg ) // We're not AFK
-			self giveRankXP( 2 );
+			self giveRankXP( 3 );
 	}
 }
