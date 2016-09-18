@@ -110,6 +110,9 @@ giveRankXP( amount ) {
 	if( self surf\_vip::isVip() )
 		amount *= 2;
 	
+	if( level.dvar[ "xp_events" ] && isDefined( level.xpEventActive ) && level.xpEventActive )
+		amount *= 2;
+	
 	self incRankXP( amount * level.dvar[ "xp_multiplier" ] );
 	//self thread updateRankScoreHUD( amount );
 }

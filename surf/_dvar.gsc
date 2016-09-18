@@ -41,6 +41,8 @@ setupDvars() {
 	addDvar( "surf_extend_timer_time", "surf_extend_timer_time", 30, 1, 12000, "int" );
 
 	addDvar( "xp_multiplier", "xp_multiplier", 1, 0.1, 12000, "float" );
+	addDvar( "xp_events", "xp_events", 1, 0, 1, "int" );
+	addDvar( "xp_events_player_count", "xp_events_player_count", 10, 0, 64, "int" );
 	
 	addDvar( "surf_record_print_interval", "surf_record_print_interval", 60, 1, 3600, "int" );
 	

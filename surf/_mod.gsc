@@ -87,6 +87,7 @@ main() {
 
 	thread startGame();
 	thread mapLogic();
+	thread xpEvents();
 }
 
 mapLogic() {
@@ -229,6 +230,8 @@ Callback_PlayerConnect() {
 
 	self thread maps\mp\gametypes\_hud_message::initNotifyMessage();
 	
+	level notify( "update_xp_event_state" );
+	
 	self.joined = true;
 
 	self spawnSpectator();
@@ -257,6 +260,8 @@ Callback_PlayerDisconnect() {
 			false
 		);
 	}
+	
+	level notify( "update_xp_event_state" );
 }
 
 Callback_PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, psOffsetTime, deathAnimDuration ) {
@@ -654,5 +659,35 @@ infiniteAmmo() {
 		self waittill( "weapon_fired" );
 		weapon = self getCurrentWeapon();
 		self setWeaponAmmoClip( weapon, weaponclipsize( weapon ) );
+	}
+}
+
+xpEvents() {
+	level.xpEventActive = false;
+	
+	level.xpEventHud = newHudElem();
+	level.xpEventHud.horzAlign = "center";
+	level.xpEventHud.vertAlign = "top";
+	level.xpEventHud.alignX = "center";
+	level.xpEventHud.y = 2;
+	level.xpEventHud.font = "default";
+	level.xpEventHud.fontscale = 1.4;
+	level.xpEventHud.hidewheninmenu = true;
+	level.xpEventHud setText( "^72x XP event (^10/" + level.dvar[ "xp_events_player_count" ] + "^7)" );
+	
+	for(;;) {
+		level waittill( "update_xp_event_state" );
+		
+		playerCount = getEntArray( "player", "classname" ).size;
+		
+		if( playerCount >= level.dvar[ "xp_events_player_count" ] ) {
+			level.xpEventActive = true;
+			
+			level.xpEventHud setText( "^72x XP event (^1ACTIVE^7)" );
+		} else {
+			level.xpEventActive = false;
+			
+			level.xpEventHud setText( "^72x XP event (^1" + playerCount + "/" + level.dvar[ "xp_events_player_count" ] + "^7)" );
+		}
 	}
 }

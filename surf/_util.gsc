@@ -25,9 +25,8 @@ credits( lines ) {
 		return;
 
 	creditsText = newHudElem();
-	creditsText.y = 10;
+	creditsText.y = 18;
 	creditsText.alignX = "center";
-	creditsText.alignY = "middle";
 	creditsText.horzAlign = "center";
 	creditsText.hidewheninmenu = true;
 	creditsText.alpha = 0;
