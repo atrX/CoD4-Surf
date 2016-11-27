@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 06, 2016 at 12:45 AM
--- Server version: 10.1.8-MariaDB
--- PHP Version: 5.6.14
+-- Host: localhost
+-- Generation Time: Nov 27, 2016 at 02:04 AM
+-- Server version: 5.7.13-0ubuntu0.16.04.2
+-- PHP Version: 7.0.8-0ubuntu0.16.04.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cod4_surf`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -31,17 +31,18 @@ CREATE TABLE `players` (
   `guid` varchar(32) NOT NULL,
   `name` varchar(64) NOT NULL,
   `vip` tinyint(1) NOT NULL DEFAULT '0',
-  `rank` int(11) NOT NULL DEFAULT '1',
-  `rankxp` int(11) NOT NULL DEFAULT '0'
+  `vip_expiry` varchar(10) DEFAULT NULL,
+  `rank_surf` int(11) NOT NULL DEFAULT '1',
+  `rankxp_surf` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `records`
+-- Table structure for table `surf_records`
 --
 
-CREATE TABLE `records` (
+CREATE TABLE `surf_records` (
   `id` int(11) NOT NULL,
   `maptime` int(11) NOT NULL,
   `player_id` int(11) NOT NULL,
@@ -59,9 +60,9 @@ ALTER TABLE `players`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `records`
+-- Indexes for table `surf_records`
 --
-ALTER TABLE `records`
+ALTER TABLE `surf_records`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -74,9 +75,9 @@ ALTER TABLE `records`
 ALTER TABLE `players`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `records`
+-- AUTO_INCREMENT for table `surf_records`
 --
-ALTER TABLE `records`
+ALTER TABLE `surf_records`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
