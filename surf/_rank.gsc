@@ -40,8 +40,16 @@ main() {
 		rankId++;
 		rankName = tableLookup( "mp/ranktable.csv", 0, rankId, 1 );
 	}
-
+	
+	level thread onPlayerConnect();
 	level thread onPlayerSpawned();
+}
+
+onPlayerConnect() {
+	for(;;) {
+		level waittill( "connected", player );
+		player thread proceduralXp();
+	}
 }
 
 onPlayerSpawned() {
@@ -64,7 +72,6 @@ onPlayerSpawned() {
 		}
 
 		player thread removeRankHUD();
-		player thread proceduralXp();
 	}
 }
 
@@ -212,12 +219,11 @@ updateRankStats( player, rankId ) {
 
 proceduralXp() {
 	self endon( "disconnect" );
-	self endon( "spawned" );
-
+	
 	for(;;) {
 		self.oldOrg = self.origin;
 		wait 60;
-		if( self.origin != self.oldOrg ) // We're not AFK
-			self giveRankXP( 3 );
+		if( self.sessionstate == "playing" && self.origin != self.oldOrg ) // We're not AFK
+			self giveRankXP( 2 );
 	}
 }

@@ -25,6 +25,7 @@ main() {
 	game[ "menu_mapvote" ] = "mapvote";
 	game[ "menu_extend_timer" ] = "extend_timer";
 	game[ "menu_quickactions" ] = "quickactions";
+	game[ "menu_challenges" ] = "challenges";
 
 	precacheMenu( game[ "menu_ingame_main" ] );
 	precacheMenu( game[ "menu_customization" ] );
@@ -32,6 +33,8 @@ main() {
 	precacheMenu( game[ "menu_mapvote" ] );
 	precacheMenu( game[ "menu_extend_timer" ] );
 	precacheMenu( game[ "menu_quickactions" ] );
+	precacheMenu( game[ "menu_challenges" ] );
+	precacheMenu( "challenge_request" );
 	precacheMenu( "callvote" );
 
 	precacheShader( "black" );
@@ -207,6 +210,32 @@ onMenuResponse() {
 					self iPrintln( "Auto Surf Enabled" );
 					self setStat( 984, 1 );
 					self.autoSurf = true;
+				}
+				break;
+			
+			case "toggle_auto_hop":
+				if( self getStat( 983 ) == 1 ) {
+					self iPrintln( "Auto Bunny Hop Disabled" );
+					self setStat( 983, 0 );
+					self.autoHop = false;
+				} else {
+					self iPrintln( "Auto Bunny Hop Enabled" );
+					self setStat( 983, 1 );
+					self.autoHop = true;
+				}
+				break;
+			}
+		} else if( menu == game[ "menu_challenges" ] ) {
+			switch( response ) {
+			case "toggle_challenges":
+				if( self getStat( 910 ) == 1 ) {
+					self iPrintln( "Challenges Enabled" );
+					self setStat( 910, 0 );
+					self.challengesDisabled = false;
+				} else {
+					self iPrintln( "Challenges Disabled" );
+					self setStat( 910, 1 );
+					self.challengesDisabled = true;
 				}
 				break;
 			}

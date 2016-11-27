@@ -36,6 +36,7 @@ trackSpectatorClientInput() {
 		if( self getSpectatedClient() > -1 ) {
 			client = getEntByNum( self getSpectatedClient() );
 			self setClientDvar( "spectator_hud_auto_surf", client.autoSurf );
+			self setClientDvar( "spectator_hud_auto_hop", client.autoHop );
 			self setClientDvar( "spectator_hud_input_fwd", client forwardButtonPressed() );
 			self setClientDvar( "spectator_hud_input_bck", client backButtonPressed() );
 			self setClientDvar( "spectator_hud_input_lft", client leftButtonPressed() );

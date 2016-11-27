@@ -252,3 +252,39 @@ span[id="cid"] {
 #sidebar .navitem:hover {
     border-left: rgba( 233, 233, 233, .04 ) 5px solid;
 }
+
+.pagination-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 32px;
+}
+
+.pagination-container .pagination-button {
+	margin: 0 4px;
+	display: block;
+	float: left;
+	box-sizing: border-box;
+	background: #1d1e2d;
+	font: 1.1em 'Open Sans', sans-serif;
+	color: #fff;
+	height: 36px;
+	font-weight: 400;
+	width: 36px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: rgba(233, 233, 233, 0.08) 1px solid;
+	line-height: 36px;
+	text-align: center;
+}
+
+.pagination-container .pagination-button:hover {
+	background: #282939;
+}
+
+.pagination-container .pagination-button-active {
+	background: #282939;
+}

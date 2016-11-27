@@ -71,7 +71,7 @@ foreach( $records as $key => $record ) {
 	$time .= $ms;
 
 	echo '<div class="record">';
-	echo '<div class="field">' . ( $key + 1 ) . '</div>';
+	echo '<div class="field">' . ( ( $page - 1 ) * 25 + 1 + $key ) . '</div>';
 	echo '<div class="field">' . $time . '</div>';
 	echo '<div class="field">' . $record[ 'map' ] . '</div>';
 	echo '<div class="field">' . $players[ $key ] . '</div>';
@@ -80,3 +80,40 @@ foreach( $records as $key => $record ) {
 
 endif;
 ?>
+
+<!-- Pagination -->
+<div class="pagination-container">
+	<?php
+
+	for( $i = 1; $i <= 2 && $i <= $page_count; $i++ ) {
+		echo "<div class='pagination-button" . ( $page == $i ? " pagination-button-active" : "" ) . "' data-page='$i' data-unique='$unique'>$i</div>";
+	}
+
+	if( $page_count > 2 ) {
+		if( $page_count > 4 ) {
+			if( $page > 4 && $page < $page_count - 3 ) {
+				for( $i = ( $page_count > 9 ? $page - 2 : 3 ); $i <= $page + 2; $i++ ) {
+					echo "<div class='pagination-button" . ( $page == $i ? " pagination-button-active" : "" ) . "' data-page='$i' data-unique='$unique'>$i</div>";
+				}
+			} else {
+				if( $page <= 4 ) {
+					for( $i = 3; $i <= 5; $i++ ) {
+						echo "<div class='pagination-button" . ( $page == $i ? " pagination-button-active" : "" ) . "' data-page='$i' data-unique='$unique'>$i</div>";
+					}
+				}
+
+				if( $page >= $page_count - 3 ) {
+					for( $i = $page_count - 4; $i <= $page_count - 2; $i++ ) {
+						echo "<div class='pagination-button" . ( $page == $i ? " pagination-button-active" : "" ) . "' data-page='$i' data-unique='$unique'>$i</div>";
+					}
+				}
+			}
+		}
+
+		for( $i = ( $page_count > 4 ? $page_count - 1 : 3 ); $i <= $page_count; $i++ ) {
+			echo "<div class='pagination-button" . ( $page == $i ? " pagination-button-active" : "" ) . "' data-page='$i' data-unique='$unique'>$i</div>";
+		}
+	}
+
+	?>
+</div>

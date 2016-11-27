@@ -6,7 +6,7 @@ class StatsController extends AppController {
 
 		$this->template = 'Stats/index';
 
-		if( isset( $args[0] ) ) {
+		if( isset( $args[0] ) && is_numeric( $args[0] ) ) {
 			$cid = $args[0];
 			$this->set( [ 'cid', $cid ] );
 

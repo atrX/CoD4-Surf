@@ -31,6 +31,7 @@ getDifficulty( mapname  ) {
 		return "easy";
 		
 	case "mp_surf_airarena":
+	case "mp_surf_neonrider":
 		return "intermediate";
 	
 	case "some_hard_map":

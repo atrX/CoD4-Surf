@@ -47,6 +47,10 @@ setupDvars() {
 	addDvar( "surf_record_print_interval", "surf_record_print_interval", 60, 1, 3600, "int" );
 	
 	addDvar( "surf_infinite_ammo", "surf_infinite_ammo", 1, 0, 1, "int" );
+	
+	addDvar( "surf_challenge_request_time", "surf_challenge_request_time", 15, 1, 60, "int" );
+	addDvar( "surf_challenge_countdown_time", "surf_challenge_countdown_time", 3, 1, 60, "int" );
+	addDvar( "surf_challenge_xp_reward", "surf_challenge_xp_reward", 50, 1, 12000, "int" );
 
 	addDvar( "surf_api_host", "surf_api_host", "localhost", "", "", "string" );
 	addDvar( "surf_api_key", "surf_api_key", "e2SlkSVc4WgeinOzD6HgFncrWP4eH9wc", "", "", "string" );

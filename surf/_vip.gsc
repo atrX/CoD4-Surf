@@ -79,7 +79,7 @@ toggleVipItem( item ) {
 		break;
 	}
 	
-	if( self getStat( stat ) == 1 )
+	if( self getStat( stat ) == 1 || !self isVip() )
 		setVipItem( item, 0 );
 	else
 		setVipItem( item, 1 );

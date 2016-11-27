@@ -17,6 +17,7 @@
  */
 
 main() {
+	thread b3();
 	thread onPlayerConnect();
 }
 
@@ -25,8 +26,6 @@ onPlayerConnect() {
 
 	for(;;) {
 		level waittill( "connected", player );
-		
-		thread b3();
 		player thread trackB3();
 	}
 }
@@ -70,6 +69,15 @@ b3() {
 			thread surf\_vote::extendTimer();
 			
 			setDvar( "surf_extend_timer", 0 );
+		}
+		
+		if( getDvarInt( "surf_challenge" ) == 1 ) {
+			challenger = getDvarInt( "surf_challenge_challenger" );
+			challenged = getDvarInt( "surf_challenge_challenged" );
+			
+			thread surf\_challenge::challenge( challenger, challenged );
+			
+			setDvar( "surf_challenge", 0 );
 		}
 		
 		wait .1;

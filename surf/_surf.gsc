@@ -65,7 +65,7 @@ isOnRampLeft() {
 		)
 	);
 	
-	if( distanceSquared( dist, self.origin ) < 64 )
+	if( distanceSquared( dist, self.origin ) < 256 )
 		return true;
 		
 	return false;
@@ -80,7 +80,7 @@ isOnRampRight() {
 		)
 	);
 	
-	if( distanceSquared( dist, self.origin ) < 64 )
+	if( distanceSquared( dist, self.origin ) < 256 )
 		return true;
 		
 	return false;

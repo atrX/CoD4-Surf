@@ -157,8 +157,9 @@
 		CHOICE_BUTTON_VIS( 10, "@MENU_SINGLE_PLAYER", open single_popmenu;, when( !localvarBool( ui_hideBack ) ) )
 		CHOICE_BUTTON_VIS( 11, "@MENU_QUIT", open quit_popmenu;, when( !localvarBool( ui_hideBack ) ) )
 		*/
-
-		SURF_CHOICE_BUTTON_VIS( 3, "Join ^1Rev ^3Surf", exec "connect revmods.me:28960";, when( !localvarBool( ui_hideBack ) ) )
+		
+		SURF_CHOICE_BUTTON_VIS( 2, "Join ^1Rev ^3Surf", exec "connect revmods.me:28960";, when( !localvarBool( ui_hideBack ) ) )
+		SURF_CHOICE_BUTTON_VIS( 3, "Join ^1Rev ^3Speedrun", exec "connect revmods.me:28990";, when( !localvarBool( ui_hideBack ) ) )
 		SURF_CHOICE_BUTTON_VIS( 4, "Join ^1Rev ^3TDM", exec "connect revmods.me:28970";, when( !localvarBool( ui_hideBack ) ) )
 		SURF_CHOICE_BUTTON_VIS( 5, "Join ^1Rev ^3Combined Ops", exec "connect revmods.me:28980";, when( !localvarBool( ui_hideBack ) ) )
 

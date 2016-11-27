@@ -1166,8 +1166,21 @@
 		itemDef
 		{
 			rect 			0 -14 1 1 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
+			text 			"Auto-Bhop"
+			visible 		when( spectatingClient() && dvarInt( "spectator_hud_auto_hop" ) )
+			origin 			0 0
+			forecolor 		0.39 0.27 0.51 1
+			textfont 		UI_FONT_NORMAL
+			textalign 		ITEM_ALIGN_CENTER
+			textscale 		0.4
+			decoration
+		}
+
+		itemDef
+		{
+			rect 			0 -14 1 1 HORIZONTAL_ALIGN_CENTER VERTICAL_ALIGN_BOTTOM
 			text 			"Space"
-			visible 		when( spectatingClient() && dvarInt( "spectator_hud_input_jmp" ) )
+			visible 		when( spectatingClient() && dvarInt( "spectator_hud_input_jmp" ) && !dvarInt( "spectator_hud_auto_hop" ) )
 			origin 			0 0
 			forecolor 		0.39 0.27 0.51 1
 			textfont 		UI_FONT_NORMAL

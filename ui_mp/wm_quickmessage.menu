@@ -111,7 +111,23 @@
 		{
 			name			"window"
 			visible			1
-			rect			16 100 0 0
+			rect			16 84 0 0
+			origin			ORIGIN_QUICKMESSAGEWINDOW
+			forecolor		1 1 1 1
+			textfont		UI_FONT_NORMAL
+			textstyle		ITEM_TEXTSTYLE_SHADOWED
+			textscale		TEXTSIZE_SMALL
+			textaligny		8
+			text			"5. Challenges"
+			decoration
+		}
+		execKey "5" { close quickmessage; open challenges }
+
+		itemDef
+		{
+			name			"window"
+			visible			1
+			rect			16 116 0 0
 			origin			ORIGIN_QUICKMESSAGEWINDOW
 			forecolor		1 1 1 1
 			textfont		UI_FONT_NORMAL

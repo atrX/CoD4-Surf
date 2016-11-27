@@ -1,4 +1,4 @@
-__version__ = '1.0'
+__version__ = '1.0.2'
 __author__  = 'atrX'
 
 import b3
@@ -17,17 +17,18 @@ class SurfPlugin( b3.plugin.Plugin ):
 		if not self._adminPlugin:
 			self.error( 'Could not find admin plugin' )
 			return False
-
+		
 		self.registerEvent( 'EVT_GAME_ROUND_START', self.onRoundStart )
 		self.registerEvent( 'EVT_CLIENT_CONNECT', self.onConnect )
 
 		self._adminPlugin.registerCommand( self, 'rtv', 0, self.cmd_rtv )
 		self._adminPlugin.registerCommand( self, 'extend', 0, self.cmd_extend, 'extendtimer' )
 		self._adminPlugin.registerCommand( self, 'retry', 0, self.cmd_retry, 're' )
+		self._adminPlugin.registerCommand( self, 'challenge', 0, self.cmd_challenge, 'race' )
 		self._adminPlugin.registerCommand( self, 'setrank', 80, self.cmd_setrank )
 		self._adminPlugin.registerCommand( self, 'tutorial', 0, self.cmd_tutorial )
 
-		self.console.say( 'Surf Plugin 1.0 by atrX Loaded!' )
+		self.console.say( 'Surf Plugin %s by atrX Loaded!' % __version__ )
 
 	def onRoundStart( self, event ):
 		self.voteStarted = False
@@ -57,7 +58,7 @@ class SurfPlugin( b3.plugin.Plugin ):
 				
 			clientCount = len( self.console.clients.getList() )
 
-			self.console.say( '^7%s^7 wants to rock the vote!' % client.exactName )
+			self.console.say( '^7%s^7 wants to rock the vote! (type !rtv to join in)' % client.exactName )
 
 			if rtvs > clientCount * .66:
 				self.voteStarted = True
@@ -80,6 +81,29 @@ class SurfPlugin( b3.plugin.Plugin ):
 		Reset your timer and go back to spawn.
 		"""
 		self.console.setCvar( 'surf_respawn_%s' % client.cid, '1' )
+
+	def cmd_challenge( self, data, client, cmd = None ):
+		"""\
+		<player> - Challenge another player.
+		"""
+		# this will split the player name and the message
+		input = self._adminPlugin.parseUserCmd( data )
+		if input:
+			# input[0] is the player id
+			sclient = self._adminPlugin.findClientPrompt( input[0], client )
+			if not sclient:
+				# a player matching the name was not found, a list of closest matches will be displayed
+				# we can exit here and the user will retry with a more specific player
+				return False
+		else:
+			client.message( '^7Invalid data, try !help challenge' )
+			return False
+		
+		self.console.setCvar( 'surf_challenge_challenger', '%s' % client.cid )
+		self.console.setCvar( 'surf_challenge_challenged', '%s' % sclient.cid )
+		self.console.setCvar( 'surf_challenge', 1 )
+		
+		return True
 
 	def cmd_setrank( self, data, client, cmd = None ):
 		"""\

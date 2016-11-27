@@ -102,31 +102,33 @@ startmapTrigger() {
 				break;
 		}
 		
-		self notify( "left_spawn" );
-
-		if( isDefined( self.clock ) )
-			self.clock destroy();
-
-		while( self isTouching( trigger[0] ) )
-			wait .05;
-
-		self.startTime = getTime();
-
-		self.clock = newClientHudElem( self );
-		self.clock.horzAlign = "left";
-		self.clock.vertAlign = "bottom";
-		self.clock.alignX = "left";
-		self.clock.alignY = "bottom";
-		self.clock.x = 8;
-		self.clock.y = -16;
-		self.clock.font = "default";
-		self.clock.color = ( .165, .498, .702 ); //self.clock.color = ( .612, .153, .69 );
-		self.clock.fontscale = 1.4;
-		self.clock.label = &"^8Time: ^7&&1";
-		self.clock.hidewheninmenu = true;
-		self.clock setTenthsTimerUp( .05 );
-
-		self thread endmapTrigger();
+		if( !isDefined( self.inChallenge ) || !self.inChallenge ) {
+			if( isDefined( self.clock ) )
+				self.clock destroy();
+	
+			while( self isTouching( trigger[0] ) )
+				wait .05;
+			
+			self notify( "left_spawn" );
+	
+			self.startTime = getTime();
+	
+			self.clock = newClientHudElem( self );
+			self.clock.horzAlign = "left";
+			self.clock.vertAlign = "bottom";
+			self.clock.alignX = "left";
+			self.clock.alignY = "bottom";
+			self.clock.x = 8;
+			self.clock.y = -16;
+			self.clock.font = "default";
+			self.clock.color = ( .165, .498, .702 ); //self.clock.color = ( .612, .153, .69 );
+			self.clock.fontscale = 1.4;
+			self.clock.label = &"^8Time: ^7&&1";
+			self.clock.hidewheninmenu = true;
+			self.clock setTenthsTimerUp( .05 );
+	
+			self thread endmapTrigger();
+		}
 	}
 }
 
@@ -154,6 +156,8 @@ endmapTrigger() {
 	}
 
 	maptime = getTime() - self.startTime;
+	
+	self notify( "map_finished" );
 
 	if( isDefined( self.clock ) )
 		self.clock destroy();

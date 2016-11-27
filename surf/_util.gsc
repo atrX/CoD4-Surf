@@ -146,7 +146,13 @@ getPlayerSpeed() {
 }
 
 setPlayerSpeed( speed ) {
-	self scalePlayerSpeed( speed / self getPlayerSpeed() );
+	currentSpeed = self getPlayerSpeed();
+	
+	// Can't scale speed if it's 0
+	if( currentSpeed == 0 )
+		return;
+	
+	self scalePlayerSpeed( speed / currentSpeed );
 }
 
 scalePlayerSpeed( speedScale ) {

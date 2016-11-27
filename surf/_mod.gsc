@@ -57,6 +57,7 @@ main() {
 		surf\_records::main();
 	surf\_vote::main();
 	surf\_spectator::main();
+	surf\_challenge::main();
 	surf\_b3::main();
 
 	setClientNameMode( "auto_change" );
@@ -282,7 +283,7 @@ Callback_PlayerKilled( eInflictor, attacker, iDamage, sMeansOfDeath, sWeapon, vD
 	self allowSpectateTeam( "freelook", false );
 	self allowSpectateTeam( "none", true );
 
-	obituary( self, attacker, sWeapon, sMeansOfDeath );
+	//obituary( self, attacker, sWeapon, sMeansOfDeath );
 
 	wait .1;
 	
@@ -401,6 +402,7 @@ spawnPlayer() {
 	if( self getStat( 985 ) == 1 )
 		self setClientDvar( "cg_drawgun", 0 );
 	self.autoSurf = self getStat( 984 );
+	self.autoHop = self getStat( 983 );
 	
 	self notify( "spawned_player" );
 	level notify( "player_spawn", self );
@@ -414,6 +416,7 @@ spawnPlayer() {
 
 spawnSpectator( origin, angles ) {
 	self notify( "spawned" );
+	self notify( "spectator_spawn" );
 
 	resetTimeout();
 

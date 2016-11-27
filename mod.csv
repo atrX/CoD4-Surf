@@ -295,6 +295,8 @@ menufile,ui_mp/scriptmenus/call_vote.menu
 menufile,ui_mp/scriptmenus/mapvote.menu
 menufile,ui_mp/scriptmenus/extend_timer.menu
 menufile,ui_mp/scriptmenus/quickactions.menu
+menufile,ui_mp/scriptmenus/challenges.menu
+menufile,ui_mp/scriptmenus/challenge_request.menu
 
 menufile,ui/options_game_pc.menu
 

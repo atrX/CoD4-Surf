@@ -42,7 +42,7 @@ bunnyhop() {
 				playerVel = vectorScale( vectorNormalize( playerVel ), playerSpeed );
 			}
 
-			if( self jumpButtonPressed() && ( self isOnGround() || self.wasOnGroundLastTime ) ) {
+			if( ( self jumpButtonPressed() || ( self.autoHop && self surf\_util::getPlayerSpeed() > 0 ) ) && ( self isOnGround() || self.wasOnGroundLastTime ) ) {
 				playerSpeedLastTime = sqrt( ( self.velLastTime[0] * self.velLastTime[0] ) + ( self.velLastTime[1] * self.velLastTime[1] ) );
 				
 				if( playerSpeedLastTime > playerSpeed ) {
@@ -59,7 +59,10 @@ bunnyhop() {
 				self setVelocity( playerVel );
 			}
 
-			self.wasInJumpLastTime = self jumpButtonPressed();
+			if( self.autoHop )
+				self.wasInJumpLastTime = true;
+			else
+				self.wasInJumpLastTime = self jumpButtonPressed();
 			self.wasOnGroundLastTime = self isOnGround();
 			self.velLastTime = playerVel;
 		}
