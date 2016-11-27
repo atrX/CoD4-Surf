@@ -1,7 +1,7 @@
 # CoD4 Surf Mod
 
 ## Notes
-This mod requires "CoD4x Server" to run. You can aquire this server patch from http://revmods.me/forum/86-cod4x-server/
+This mod requires "CoD4x Server" to run. You can aquire this server patch from https://github.com/atrX/CoD4x-Server
 
 
 ## License
