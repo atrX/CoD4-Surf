@@ -53,6 +53,7 @@ setupDvars() {
 	addDvar( "surf_challenge_xp_reward", "surf_challenge_xp_reward", 50, 1, 12000, "int" );
 
 	addDvar( "surf_api_host", "surf_api_host", "localhost", "", "", "string" );
+	addDvar( "surf_api_path", "surf_api_path", "sys/cod4", "", "", "string" );
 	addDvar( "surf_api_key", "surf_api_key", "e2SlkSVc4WgeinOzD6HgFncrWP4eH9wc", "", "", "string" );
 
 	addDvar( "motd", "surf_motd", "Welcome to ^2CoD4 ^3Surf^7!", "", "", "string" );

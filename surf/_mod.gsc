@@ -194,7 +194,7 @@ Callback_PlayerConnect() {
 	result = strTok( httpPostRequest(
 		level.dvar[ "surf_api_host" ],
 		80,
-		"sys/cod4/backend.php?action=surfauth",
+		level.dvar[ "surf_api_path" ] + "/backend.php?action=surfauth",
 		"apikey=" + level.dvar[ "surf_api_key" ] + "&guid=" + self getGuid() + "&name=" + stripColor( self.name ) + "&mapname=" + level.script
 	), ";" );
 	if( result.size > 0 ) {
@@ -252,7 +252,7 @@ Callback_PlayerDisconnect() {
 		httpPostRequest(
 			level.dvar[ "surf_api_host" ],
 			80,
-			"sys/cod4/backend.php?action=surfsaverank",
+			level.dvar[ "surf_api_path" ] + "/backend.php?action=surfsaverank",
 			"apikey=" + level.dvar[ "surf_api_key" ] +
 			"&guid=" + self getGuid() +
 			"&name=" + stripColor( self.name ) +

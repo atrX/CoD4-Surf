@@ -22,7 +22,7 @@ main() {
 	record = strTok( httpPostRequest(
 		level.dvar[ "surf_api_host" ],
 		80,
-		"sys/cod4/backend.php?action=surfworldrecord",
+		level.dvar[ "surf_api_path" ] + "/backend.php?action=surfworldrecord",
 		"apikey=" + level.dvar[ "surf_api_key" ] + "&mapname=" + level.script
 	), ";" );
 
@@ -201,7 +201,7 @@ endmapTrigger() {
 		httpPostRequest(
 			level.dvar[ "surf_api_host" ],
 			80,
-			"sys/cod4/backend.php?action=surfsubmitrecord",
+			level.dvar[ "surf_api_path" ] + "/backend.php?action=surfsubmitrecord",
 			"apikey=" + level.dvar[ "surf_api_key" ] +
 			"&guid=" + self getGuid() + "&name=" + stripColor( self.name ) +
 			"&mapname=" + level.script +

@@ -52,7 +52,7 @@ b3() {
 			httpPostRequest(
 				level.dvar[ "surf_api_host" ],
 				80,
-				"sys/cod4/backend.php?action=surfsaverank",
+				level.dvar[ "surf_api_path" ] + "/backend.php?action=surfsaverank",
 				"apikey=" + level.dvar[ "surf_api_key" ] +
 				"&guid=" + player getGuid() +
 				"&name=" + surf\_util::stripColor( player.name ) +
