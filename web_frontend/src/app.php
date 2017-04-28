@@ -28,6 +28,7 @@ class App {
 		if( isset( $_GET[ 'url' ] ) ) {
 			// Turn url parameters into an array
 			$url = $_GET[ 'url' ];
+			$url = ltrim( $url, '/' );
 			$url = rtrim( $url, '/' );
 			$url = explode( '/', $url );
 
