@@ -38,7 +38,7 @@ trackSpectatorClientInput() {
 			self setClientDvar( "spectator_hud_auto_surf", client.autoSurf );
 			self setClientDvar( "spectator_hud_auto_hop", client.autoHop );
 			self setClientDvar( "spectator_hud_input_fwd", client forwardButtonPressed() );
-			self setClientDvar( "spectator_hud_input_bck", client backButtonPressed() );
+			self setClientDvar( "spectator_hud_input_bck", client backwardButtonPressed() );
 			self setClientDvar( "spectator_hud_input_lft", client leftButtonPressed() );
 			self setClientDvar( "spectator_hud_input_rght", client rightButtonPressed() );
 			self setClientDvar( "spectator_hud_input_jmp", client jumpButtonPressed() );

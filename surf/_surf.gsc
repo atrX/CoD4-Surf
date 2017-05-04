@@ -33,7 +33,7 @@ surf() {
 			continue;
 		}
 		
-		if( self backButtonPressed() ) {
+		if( self backwardButtonPressed() ) {
 			self.isSurfing = false;
 			self setVelocity( self getVelocity() * ( 0, 0, 1 ) );
 			continue;
@@ -129,7 +129,7 @@ stopAirStrafe() {
 			
 		// At this point we've been on a surf or been in the air for long enough
 		while( !self isOnGround() || self.isSurfing ) {
-			if( self backButtonPressed() )
+			if( self backwardButtonPressed() )
 				self setVelocity( self getVelocity() * ( 0, 0, 1 ) );
 			wait .05;
 		}
