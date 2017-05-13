@@ -97,13 +97,11 @@ endif;
 				}
 			} else {
 				if( $page <= 4 ) {
-					for( $i = 3; $i <= 5; $i++ ) {
+					for( $i = 3; $i <= ( $page_count > 6 ? 5 : $page_count - 2 ); $i++ ) {
 						echo "<div class='pagination-button" . ( $page == $i ? " pagination-button-active" : "" ) . "' data-page='$i' data-unique='$unique'>$i</div>";
 					}
-				}
-
-				if( $page >= $page_count - 3 ) {
-					for( $i = $page_count - 4; $i <= $page_count - 2; $i++ ) {
+				} else if( $page >= $page_count - 3 ) {
+					for( $i = ( $page_count > 6 ? $page_count - 4 : 3 ); $i <= $page_count - 2; $i++ ) {
 						echo "<div class='pagination-button" . ( $page == $i ? " pagination-button-active" : "" ) . "' data-page='$i' data-unique='$unique'>$i</div>";
 					}
 				}
