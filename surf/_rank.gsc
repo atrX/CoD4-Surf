@@ -172,6 +172,8 @@ updateRankAnnounceHUD() {
 }
 
 incRankXP( amount ) {
+	// Incase we pass a float somewhere
+	amount = int( amount );
 	xp = self getRankXP();
 	newXp = xp + amount;
 
