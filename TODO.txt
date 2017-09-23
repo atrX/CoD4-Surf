@@ -1,2 +1,3 @@
 - Fix for being able to surf using both A and D regardless of the side of the surf you're on
-- Add pagination to web frontend
+- Add more trails
+- Add VIP weapon
