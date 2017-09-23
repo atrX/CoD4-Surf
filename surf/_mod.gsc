@@ -182,7 +182,7 @@ Callback_PlayerConnect() {
 	logPrint( "J;" + self getGuid() + ";" + self getEntityNumber() + ";" + self.name + "\n" );
 
 	if( game[ "state" ] == "intermission" ) {
-		spawnIntermission();
+		self spawnIntermission();
 		return;
 	}
 
