@@ -62,3 +62,9 @@ fabric.properties
 
 # Sonarlint plugin
 .idea/sonarlint
+
+games_mp\.log
+
+q3config_server\.cfg
+
+qconsole\.log
