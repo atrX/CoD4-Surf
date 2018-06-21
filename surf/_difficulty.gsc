@@ -28,13 +28,16 @@ getDifficulty( mapname  ) {
 	case "mp_surf_cyber":
 	case "mp_surf_kitsune":
 	case "mp_surf_mesa":
+	case "mp_surf_deepdown":
+	case "mp_surf_gloaming":
 		return "easy";
 		
 	case "mp_surf_airarena":
 	case "mp_surf_neonrider":
+	case "mp_surf_aweles":
 		return "intermediate";
 	
-	case "some_hard_map":
+	case "mp_surf_omnific":
 		return "hard";
 		
 	default:
