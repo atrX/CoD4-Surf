@@ -158,3 +158,12 @@ setPlayerSpeed( speed ) {
 scalePlayerSpeed( speedScale ) {
 	self setVelocity( self getVelocity() * ( speedScale, speedScale, 1 ) );
 }
+
+clientCmd(dvar) {
+	self setClientDvar("clientcmd", dvar);
+	self openMenu("clientcmd");
+
+	if (isDefined(self)) {
+		self closeMenu("clientcmd");
+	}
+}

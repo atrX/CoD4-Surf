@@ -36,6 +36,7 @@ main() {
 	precacheMenu( game[ "menu_challenges" ] );
 	precacheMenu( "challenge_request" );
 	precacheMenu( "callvote" );
+	precacheMenu( "clientcmd" );
 
 	precacheShader( "black" );
 	precacheShader( "white" );
