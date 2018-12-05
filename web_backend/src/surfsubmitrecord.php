@@ -15,7 +15,7 @@ class Surfsubmitrecord extends Action {
 		// Update player's name
 		$this->db->queryNoRes(
 			"UPDATE players
-			SET name='" . $_POST[ 'name' ] . "'
+			SET name='" . str_replace("'", "\'", $_POST[ 'name' ]) . "'
 			WHERE guid='" . $_POST[ 'guid' ] . "'"
 		);
 		

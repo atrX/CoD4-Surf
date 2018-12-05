@@ -15,7 +15,7 @@ class Surfsaverank extends Action {
 		// Update stats
 		$this->db->queryNoRes(
 			"UPDATE players
-			SET name='" . $_POST[ 'name' ] . "', rankxp_surf='" . $_POST[ 'rankxp' ] . "', rank_surf='" . $_POST[ 'rank' ] . "'
+			SET name='" . str_replace("'", "\'", $_POST[ 'name' ]) . "', rankxp_surf='" . $_POST[ 'rankxp' ] . "', rank_surf='" . $_POST[ 'rank' ] . "'
 			WHERE guid='" . $_POST[ 'guid' ] . "'"
 		);
 		
