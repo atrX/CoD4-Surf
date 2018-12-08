@@ -20,7 +20,7 @@ class Surfauth extends Action {
 		if( count( $playerData ) < 1 ) {
 			$this->db->queryNoRes(
 				"INSERT INTO players (guid, name, vip, vip_expiry, rank_surf, rankxp_surf)
-				VALUES ('" . $_POST[ 'guid' ] . "', '" . $_POST[ 'name' ] . "', '0', '', '1', '0')"
+				VALUES ('" . $_POST[ 'guid' ] . "', '" . str_replace("'", "\'", $_POST['name']) . "', '0', '', '1', '0')"
 			);
 			
 			echo 'vip:0;record:0;rankxp:0';
