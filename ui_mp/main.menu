@@ -158,19 +158,26 @@
 		CHOICE_BUTTON_VIS( 11, "@MENU_QUIT", open quit_popmenu;, when( !localvarBool( ui_hideBack ) ) )
 		*/
 		
-		SURF_CHOICE_BUTTON_VIS( 2, "Join ^1Rev ^3Surf", exec "connect revmods.me:28960";, when( !localvarBool( ui_hideBack ) ) )
-		SURF_CHOICE_BUTTON_VIS( 3, "Join ^1Rev ^3Speedrun", exec "connect revmods.me:28990";, when( !localvarBool( ui_hideBack ) ) )
-		SURF_CHOICE_BUTTON_VIS( 4, "Join ^1Rev ^3TDM", exec "connect revmods.me:28970";, when( !localvarBool( ui_hideBack ) ) )
-		SURF_CHOICE_BUTTON_VIS( 5, "Join ^1Rev ^3Combined Ops", exec "connect revmods.me:28980";, when( !localvarBool( ui_hideBack ) ) )
+		//SURF_CHOICE_BUTTON_VIS( 2, "Join ^1Rev ^3Surf", exec "connect revmods.me:28960";, when( !localvarBool( ui_hideBack ) ) )
+		//SURF_CHOICE_BUTTON_VIS( 3, "Join ^1Rev ^3Speedrun", exec "connect revmods.me:28990";, when( !localvarBool( ui_hideBack ) ) )
+		//SURF_CHOICE_BUTTON_VIS( 4, "Join ^1Rev ^3TDM", exec "connect revmods.me:28970";, when( !localvarBool( ui_hideBack ) ) )
+		//SURF_CHOICE_BUTTON_VIS( 5, "Join ^1Rev ^3Combined Ops", exec "connect revmods.me:28980";, when( !localvarBool( ui_hideBack ) ) )
+		
+		SURF_CHOICE_BUTTON_VIS(1, "Join ^1Raid ^3Deathrun", exec "connect raid-gaming.net:28960";, when(!localvarBool(ui_hideBack)))
+		SURF_CHOICE_BUTTON_VIS(2, "Join ^1Raid ^3Surf", exec "connect raid-gaming.net:28965";, when(!localvarBool(ui_hideBack)))
+		SURF_CHOICE_BUTTON_VIS(3, "Join ^1Raid ^3Promod", exec "connect raid-gaming.net:28985";, when(!localvarBool(ui_hideBack)))
+		SURF_CHOICE_BUTTON_VIS(4, "Join ^1Raid ^3Combined Ops", exec "connect raid-gaming.net:28975";, when(!localvarBool(ui_hideBack)))
+		SURF_CHOICE_BUTTON_VIS(5, "Join ^1Raid ^3Fun", exec "connect raid-gaming.net:28980";, when(!localvarBool(ui_hideBack)))
+		SURF_CHOICE_BUTTON_VIS(6, "Join ^1Raid ^3TDM", exec "connect raid-gaming.net:28970";, when(!localvarBool(ui_hideBack)))
 
 		//CHOICE_SEPARATOR_VIS( CHOICE_SEP_1, when( !localvarBool( ui_hideBack ) ) )
 		
 		// Temporary
-		SURF_CHOICE_BUTTON_VIS( 7, "Options", open main_options;, when( !localvarBool( ui_hideBack ) ) )
-		SURF_CHOICE_BUTTON_VIS( 8, "Controls", open main_controls;, when( !localvarBool( ui_hideBack ) ) )
+		SURF_CHOICE_BUTTON_VIS( 8, "Options", open main_options;, when( !localvarBool( ui_hideBack ) ) )
+		SURF_CHOICE_BUTTON_VIS( 9, "Controls", open main_controls;, when( !localvarBool( ui_hideBack ) ) )
 		
-		SURF_CHOICE_BUTTON_VIS( 10, "Exit the mod", uiScript ClearMods;, when( !localvarBool( ui_hideBack ) ) )
-		SURF_CHOICE_BUTTON_VIS( 11, "Quit", open quit_popmenu;, when( !localvarBool( ui_hideBack ) ) )
+		SURF_CHOICE_BUTTON_VIS( 11, "Exit the mod", uiScript ClearMods;, when( !localvarBool( ui_hideBack ) ) )
+		SURF_CHOICE_BUTTON_VIS( 12, "Quit", open quit_popmenu;, when( !localvarBool( ui_hideBack ) ) )
 		
 		/*
 		SURF_CHOICE_BUTTON_VIS( 8, "Options", open main_options;, when( !localvarBool( ui_hideBack ) ) )

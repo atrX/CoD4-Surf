@@ -20,7 +20,7 @@
 
 main() {
 	maps\mp\_load::main();
-
+	
 	if( !isDefined( game[ "allies" ] ) )
 		game[ "allies" ] = "marines";
 	if( !isDefined( game[ "axis" ] ) )

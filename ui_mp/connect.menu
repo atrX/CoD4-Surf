@@ -47,7 +47,7 @@
 			rect 			120 36 1 1 HORIZONTAL_ALIGN_LEFT VERTICAL_ALIGN_TOP
 			origin			0 0
 			forecolor		1 1 1 1
-			exp				text( "Revolutionary Mods" )
+			exp				text( "Raid Gaming" )
 			textfont		UI_FONT_NORMAL
 			textalign		ITEM_ALIGN_LEFT
 			textscale		0.6

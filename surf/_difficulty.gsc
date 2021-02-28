@@ -30,16 +30,20 @@ getDifficulty( mapname  ) {
 	case "mp_surf_mesa":
 	case "mp_surf_deepdown":
 	case "mp_surf_gloaming":
+	case "mp_surf_xoxo":
+	case "mp_surf_ace":
+	case "mp_surf_andromeda":
 		return "easy";
-		
+
 	case "mp_surf_airarena":
 	case "mp_surf_neonrider":
 	case "mp_surf_aweles":
+	case "mp_surf_nova":
 		return "intermediate";
-	
+
 	case "mp_surf_omnific":
 		return "hard";
-		
+
 	default:
 		return undefined;
 	}
